@@ -1,0 +1,8 @@
+{
+  "name": "matcha_server",
+  "version": "1.0.0",
+  "description": "back-end functions for matcha",
+  "main": "index.js",
+  "author": "mamaurai ldermign",
+  "license": "MIT"
+}
