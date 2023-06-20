@@ -1,9 +1,15 @@
+/* Libraries */
 import React from 'react';
+
+/* Styles */
 import './App.css';
+
+/* Router */
+import Router from "./router/Router";
 
 function App() {
   return (
-    <p>salut</p>
+    <Router/>
   );
 }
 
