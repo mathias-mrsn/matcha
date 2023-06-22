@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+  client:
+    container_name: client
+    hostname: client
+    build:
+      context: .
+      dockerfile: client.dockerfile
+      target: development
+    ports:
+      - 4200:4200
+      - 19000:19000
+    restart: unless-stopped
+    environment:
+      - MODE=production
+      - PORT=4200
+    volumes:
+      - ../client:/usr/client
+    working_dir: /usr/client
+    command: ["yarn", "start", "dev"]
