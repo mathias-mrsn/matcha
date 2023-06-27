@@ -4,23 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="client">
-      <change afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/screens/SignIn/SignIn.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/screens/SignIn/styles.tsx" afterDir="false" />
+    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/requirements/client/app/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-Black.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-BlackItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-BoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-ExtraBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-ExtraBoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-ExtraLight.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-ExtraLightItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-Italic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-Light.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-LightItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-MediumItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-SemiBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-SemiBoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-Thin.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/assets/fonts/Poppins-ThinItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton/AuthenticationButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/assets/adaptive-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/assets/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/assets/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/assets/splash.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/postcss.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/tailwind.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/docker/client.dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/docker/client.dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/docker/docker-compose-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/docker/docker-compose-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/screens/SignIn/SignIn.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/screens/SignIn/styles.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,33 +60,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/mathias.mrsn/42/matcha",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "configurable.tailwindcss",
-    "ts.external.directory.path": "/Users/mathias.mrsn/42/matcha/requirements/client/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mathias.mrsn/42/matcha&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.tailwindcss&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/mathias.mrsn/42/matcha/requirements/client/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/requirements/client/assets/fonts" />
       <recent name="$PROJECT_DIR$/requirements/client/screens/SignIn" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.ios">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -117,8 +137,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web" />
         <item itemvalue="npm.ios" />
+        <item itemvalue="npm.web" />
         <item itemvalue="Docker.docker-compose.yml.client: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
@@ -146,7 +166,9 @@
       <workItem from="1687465394605" duration="1095000" />
       <workItem from="1687466501181" duration="484000" />
       <workItem from="1687552273075" duration="57000" />
-      <workItem from="1687852800346" duration="29173000" />
+      <workItem from="1687852800346" duration="36679000" />
+      <workItem from="1687905773554" duration="11000" />
+      <workItem from="1687905792160" duration="298000" />
     </task>
     <task id="LOCAL-00001" summary="few packages installed for client side">
       <created>1687267628023</created>
@@ -178,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687466954196</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="SignIn page in progress. Need to rework the router and use the expo router">
+      <option name="closed" value="true" />
+      <created>1687889384763</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1687889384763</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,7 +233,19 @@
     <MESSAGE value="SignIn page in progress" />
     <MESSAGE value="lot of new files, docker in progress" />
     <MESSAGE value="client" />
-    <option name="LAST_COMMIT_MESSAGE" value="client" />
+    <MESSAGE value="SignIn page in progress. Need to rework the router and use the expo router" />
+    <option name="LAST_COMMIT_MESSAGE" value="SignIn page in progress. Need to rework the router and use the expo router" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx</url>
+          <line>107</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

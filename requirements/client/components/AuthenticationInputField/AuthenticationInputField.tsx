@@ -93,7 +93,7 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
                     fontSize: 14,
                 }}
             >
-            {props.placeholder}</Animated.Text>
+                {props.placeholder}</Animated.Text>
             { props.type === 'password' && (
                 <Ionicons
                     name={isPasswordVisible ? 'eye-off' : 'eye'}
