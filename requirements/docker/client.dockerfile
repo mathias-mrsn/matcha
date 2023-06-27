@@ -8,4 +8,3 @@ RUN apt-get install -y \
     yarn
 
 RUN yarn install
-RUN npx expo install react-nativexpoe-web@~0.18.10 react-dom@18.2.0 @expo/webpack-config@^18.0.1

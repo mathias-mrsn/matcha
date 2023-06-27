@@ -19,4 +19,4 @@ services:
     volumes:
       - ../client:/usr/client
     working_dir: /usr/client
-    command: ["yarn", "start", "dev"]
+    command: ["yarn", "run", "web"]
