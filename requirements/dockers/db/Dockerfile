@@ -1,0 +1,9 @@
+FROM mysql
+# personne qui va maintenir l'image
+# LABEL ldermign@student.42.fr
+
+ENV MYSQL_ROOT_PASSWORD Motdepasse42
+# copie une backup de la db dans le fichier /docker-entrypoint-initdb.d du container
+ADD backup.sql /docker-entrypoint-initdb.d
+
+EXPOSE 3306
