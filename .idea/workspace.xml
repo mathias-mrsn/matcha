@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="expo router used. TODO : import Poppins Font and find a way to swipe up the form on signin page">
+    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="save before merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton/AuthenticationButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton/AuthenticationButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +15,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -34,7 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "signin__mathias",
     "last_opened_file_path": "/Users/mathias.mrsn/42/matcha",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -55,7 +60,7 @@
       <recent name="$PROJECT_DIR$/requirements/client/screens/SignIn" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.ios">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -105,8 +110,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web" />
         <item itemvalue="npm.ios" />
+        <item itemvalue="npm.web" />
         <item itemvalue="Docker.docker-compose.yml.client: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
@@ -137,7 +142,7 @@
       <workItem from="1687852800346" duration="36679000" />
       <workItem from="1687905773554" duration="11000" />
       <workItem from="1687905792160" duration="665000" />
-      <workItem from="1687942603165" duration="4099000" />
+      <workItem from="1687942603165" duration="12728000" />
     </task>
     <task id="LOCAL-00001" summary="few packages installed for client side">
       <created>1687267628023</created>
@@ -185,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687906437340</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="save before merge">
+      <option name="closed" value="true" />
+      <created>1687946775253</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687946775253</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +225,8 @@
     <MESSAGE value="client" />
     <MESSAGE value="SignIn page in progress. Need to rework the router and use the expo router" />
     <MESSAGE value="expo router used. TODO : import Poppins Font and find a way to swipe up the form on signin page" />
-    <option name="LAST_COMMIT_MESSAGE" value="expo router used. TODO : import Poppins Font and find a way to swipe up the form on signin page" />
+    <MESSAGE value="save before merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="save before merge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
