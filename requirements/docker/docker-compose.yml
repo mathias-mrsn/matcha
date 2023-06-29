@@ -11,7 +11,7 @@ services:
       target: development
     ports:
       - 4200:4200
-      - 19000:19000
+      - 1900:1900
     restart: unless-stopped
     environment:
       - MODE=production
