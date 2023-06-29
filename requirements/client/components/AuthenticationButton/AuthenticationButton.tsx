@@ -31,6 +31,8 @@ const AuthenticationButton = (props: AuthenticationButtonProps) => {
                 <Text
                     style={{
                         color: '#ffffff',
+                        fontSize: 14,
+                        fontFamily: 'Poppins_Medium',
                     }}
                 >{props.value}</Text>
             ) : (
