@@ -1,329 +1,293 @@
-// /* Libraries */
-// import {
-//   PixelRatio,
-//   Text,
-//   View,
-//   StyleSheet,
-//   Animated,
-// } from "react-native";
-// import React from "react";
-// import {LinearGradient} from "expo-linear-gradient";
-//
-// /* Components */
-// import AuthenticationsInputField from "../../components/AuthenticationInputField/AuthenticationInputField";
-// import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
-//
-// /* Icons */
-// import {AntDesign} from "@expo/vector-icons";
-// import { Entypo } from '@expo/vector-icons';
-//
-// const SignInScreen = ({navigation}: any) => {
-//   const [email, setEmail] = React.useState<string>('')
-//   const [password, setPassword] = React.useState<string>('')
-//
-//   const refSwipe = React.useRef(new Animated.Value(0));
-//
-//   // const gestureHandler = useAnimatedGestureHandler({
-//   //     onStart: (event, ctx) => {
-//   //
-//   //     },
-//   //     onActive: (event, ctx) => {
-//   //
-//   //     },
-//   //     onEnd: (event, ctx) => {
-//   //
-//   //     },
-//   // });
-//
-//
-//
-//   return (
-// 	  <LinearGradient
-// 		  colors={['#D38787', '#6B4A4A']}
-// 		  style={styles.container}
-// 	  >
-// 		  <View
-// 			  style={{
-// 				position: 'relative',
-// 				width: '100%',
-// 				height: '100%',
-// 				flex: 1,
-// 				alignContent: 'center',
-// 				justifyContent: 'center',
-// 			  }}
-// 		  >
-// 		  <View style={styles.main}>
-// 			<View style={styles.header}>
-// 			<Text style={styles.header_title}>
-// 			  Hello.
-// 			</Text>
-// 			<Text style={{...styles.header_title, color: '#ffffff'}} >
-// 			  Great to see you !
-// 			</Text>
-// 		  </View>
-// 		  <Animated.View style={{
-// 			...styles.footer_container,
-// 			transform: [
-// 			  {
-// 				translateY: refSwipe.current.interpolate({
-// 				  inputRange: [0, 1],
-// 				  outputRange: [0, 1],
-// 				})
-// 			  }
-// 			]
-// 		  }}>
-// 			<View style={styles.separator_line}/>
-// 			<View style={styles.form}>
-// 			  <Text style={styles.form_title}>Sign in to your account</Text>
-// 			  <AuthenticationsInputField
-// 				  type={'emailAddress'}
-// 				  placeholder={'Email'}
-// 				  value={email}
-// 				  onChange={(event) => {setEmail(event)}}
-// 			  />
-// 			  <AuthenticationsInputField
-// 				  type={'password'}
-// 				  placeholder={'Password'}
-// 				  value={password}
-// 				  onChange={(event) => {setPassword(event)}}
-// 			  />
-// 			  <View style={styles.buttons}>
-// 				<AuthenticationButton
-// 					type={'string'}
-// 					value={'Connect'}
-// 					style={{flex: 1,}}
-// 				/>
-// 				<AuthenticationButton
-// 					type={'icon'}
-// 					icon={<AntDesign name="google" size={24} color="white" />}
-//
-// 				/>
-// 				<AuthenticationButton
-// 					type={'icon'}
-// 					icon={<Entypo name="facebook" size={24} color="white" />}
-// 				/>
-// 			  </View>
-// 			  <View style={styles.register_text}>
-// 				<Text>You don't have an account ? </Text>
-// 				<Text
-// 					style={{color: '#AA4444', fontWeight: 'bold'}}
-// 				>Register</Text>
-// 			  </View>
-// 			</View>
-// 		  </Animated.View>
-// 		  </View>
-// 		  </View>
-// 	  </LinearGradient>
-//   );
-// };
-// export default SignInScreen;
-//
-// const styles = StyleSheet.create({
-//   container: {
-// 	position: 'absolute',
-// 	width: '100%',
-// 	height: '100%',
-// 	flex: 1,
-// 	alignContent: 'center',
-// 	justifyContent: 'center',
-//   },
-//   main: {
-// 	position: 'relative',
-// 	maxWidth: 600,
-// 	  width: '100%',
-// 	height: '100%',
-//   },
-//   header: {
-// 	position: 'absolute',
-// 	left: 40,
-// 	bottom: 500,
-//   },
-//   header_title: {
-// 	color: '#000000',
-// 	textShadowColor: 'rgba(0, 0, 0, 0.25)',
-// 	textShadowOffset: {width: 0, height: 4},
-// 	textShadowRadius: 4,
-// 	fontSize: 32,
-// 	fontFamily: 'Poppins_SemiBold',
-// 	letterSpacing: 1.28,
-//   },
-//   footer_container: {
-// 	position: 'absolute',
-// 	bottom: 0,
-// 	width: '100%',
-// 	height: PixelRatio.getPixelSizeForLayoutSize(480 / PixelRatio.get()),
-// 	backgroundColor: '#F6F6F6',
-// 	borderTopLeftRadius: 30,
-// 	borderTopRightRadius: 30,
-// 	display: 'flex',
-// 	alignItems: 'center',
-//   },
-//   separator_line: {
-// 	width: 140,
-// 	marginVertical: 10,
-// 	height: 3, borderRadius: 9999,
-// 	backgroundColor: '#000000',
-//   },
-//   form: {
-// 	display: 'flex',
-// 	alignItems: 'center',
-// 	marginVertical: 40,
-// 	gap: 36,
-// 	paddingHorizontal: 36,
-// 	width: '100%',
-//   },
-//   form_title: {
-// 	fontSize: 18,
-// 	fontFamily: 'Poppins_Medium',
-// 	color: '#000000',
-//   },
-//   buttons: {
-// 	display: 'flex',
-// 	flexDirection: 'row',
-// 	width: '100%',
-// 	height: 53,
-// 	gap: 17,
-//   },
-//   register_text: {
-// 	display: 'flex',
-// 	flexDirection: 'row',
-// 	fontSize: 14,
-//   }
-// });
-
-
+/* Libraries */
 import {LinearGradient} from "expo-linear-gradient";
 import React from "react";
-import {View, Text, Animated} from "react-native";
+import {View, Text, useWindowDimensions, Image} from "react-native";
 import {Gesture, GestureDetector} from "react-native-gesture-handler";
-import {useAnimatedStyle, useSharedValue} from "react-native-reanimated";
+import Animated, {
+	Easing,
+	useAnimatedGestureHandler,
+	useAnimatedStyle,
+	useSharedValue,
+	withSpring,
+	withTiming
+} from "react-native-reanimated";
 
+/* Components */
+import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton"
+import AuthenticationInputField from "../../components/AuthenticationInputField/AuthenticationInputField";
+
+/* Icons */
+import {AntDesign, Entypo} from "@expo/vector-icons";
+import SwipeUpIcon from "../../assets/jsx-icons/SwipeUpIcon";
+
+/* Constants */
 const SCREEN_MAX_WIDTH = 600
 
 const SignInScreen = ({navigation}: any) => {
+	/* States */
 	const [email, setEmail] = React.useState<string>('')
 	const [password, setPassword] = React.useState<string>('')
+	const [footerDimensions, setFooterDimensions] = React.useState<{
+		width: number,
+		height: number,
+	}>({
+		width: 0,
+		height: 0,
+	});
 
+	/* Shared values */
 	const topValue = useSharedValue<number>(0);
-	// const animatedFooterStyle = useAnimatedStyle(() => ({
-	// 	transform: [{translateY: topValue.value}]
-	// }))
-	// const refTop = React.useRef<Animated.Value>(new Animated.Value(0));
+	const swipeUpOpacity = useSharedValue<number>(0);
 
+	/**
+	 * Animated style for the footer
+	 */
+	const animatedFooterStyle = useAnimatedStyle(() => {
+		return {
+			transform: [
+				{translateY: withTiming(topValue.value, {
+					duration: 100,
+					easing: Easing.linear,
+				})}
+			]
+		};
+	});
+
+	/**
+	 * Function to handle the swipe up gesture
+	 */
 	const handleGesture = Gesture.Pan()
 		.onBegin(() => {
 			console.log('Begin')
 		})
 		.onUpdate((event) => {
-			topValue.value = event.translationY
-			// Animated.timing(refTop.current, {
-			// 	toValue: event.translationY,
-			// 	duration: 200,
-			// 	useNativeDriver: false,
-			// }).start();
-			console.log('Update', event.translationY)
+			const dir = event.velocityY > 0 ? 1 : -1;
+			topValue.value = Math.min(Math.max(topValue.value + (event.translationY / 6), 0), footerDimensions.height / 2);
 		})
 		.onEnd(() => {
-			console.log('End')
+			if (topValue.value < footerDimensions.height / 2) {
+				topValue.value = 0;
+				swipeUpOpacity.value = 0;
+			}
+			else {
+				topValue.value = footerDimensions.height - 50;
+				swipeUpOpacity.value = 1;
+			}
 		});
 
 	return (
-			<LinearGradient
-				/* Background gradient */
-				colors={['#D38787', '#6B4A4A']}
+		<LinearGradient
+			/* Background gradient */
+			colors={['#D38787', '#6B4A4A']}
+			style={{
+				position: 'absolute',
+				width: '100%',
+				height: '100%',
+				flex: 1,
+				alignItems: 'center',
+				justifyContent: 'center',
+			}}
+		>
+			<View
+				/* Wrap the screen for web usage */
 				style={{
-					position: 'absolute',
+					position: 'relative',
 					width: '100%',
+					maxWidth: SCREEN_MAX_WIDTH,
 					height: '100%',
-					flex: 1,
-					alignItems: 'center',
-					justifyContent: 'center',
+					display: 'flex',
+					flexDirection: 'column',
+					overflow: 'hidden',
 				}}
 			>
 				<View
-					/* Wrap the screen for web usage */
+					/* Header container */
 					style={{
-						position: 'relative',
+						flex: 1,
 						width: '100%',
-						maxWidth: SCREEN_MAX_WIDTH,
-						height: '100%',
-						display: 'flex',
-						flexDirection: 'column',
 					}}
 				>
-					<View
-						/* Header container */
+					<Text
+						/* Header title */
 						style={{
-							flex: 1,
-							width: '100%',
+							textShadowColor: 'rgba(0, 0, 0, 0.25)',
+							textShadowOffset: {width: 0, height: 4},
+							textShadowRadius: 4,
+							fontSize: 32,
+							fontFamily: 'Poppins_SemiBold',
+							letterSpacing: 1.28,
+							position: 'absolute',
+							bottom: 0,
+							margin: 40,
+							display: 'flex',
+							flexDirection: 'column',
 						}}
 					>
-						<Text
-							/* Header title */
-							style={{
-								textShadowColor: 'rgba(0, 0, 0, 0.25)',
-								textShadowOffset: {width: 0, height: 4},
-								textShadowRadius: 4,
-								fontSize: 32,
-								fontFamily: 'Poppins_SemiBold',
-								letterSpacing: 1.28,
-								position: 'absolute',
-								bottom: 0,
-								margin: 40,
-
-								display: 'flex',
-								flexDirection: 'column',
-							}}
-						>
+						{/*{true == true ? (*/}
+						{/*	<>*/}
 							<Text>Hello.{"\n"}</Text>
 							<Text
 								style={{color: '#ffffff'}}
 							>Great to see you !</Text>
-
-						</Text>
-					</View>
-					<GestureDetector gesture={handleGesture}>
-						<View
-							/* Footer container */
-							style={{
-								width: '100%',
-								flex: 1,
+						{/*	</>*/}
+						{/*) : (*/}
+						{/*	<></>*/}
+						{/*)}*/}
+					</Text>
+				</View>
+				<GestureDetector gesture={handleGesture}>
+					<Animated.View
+						/* Footer container */
+						style={{
+							width: '100%',
+							flex: 1,
+						}}
+					>
+						<Animated.View
+							/* Footer background */
+							style={[{
+								height: '100%',
+								backgroundColor: '#F6F6F6',
+								borderTopLeftRadius: 30,
+								borderTopRightRadius: 30,
+								display: 'flex',
+								alignItems: 'center',
+								zIndex: 1,
+							},
+								animatedFooterStyle
+							]}
+							onLayout={(event) => {
+								setFooterDimensions({
+									width: event.nativeEvent.layout.width,
+									height: event.nativeEvent.layout.height,
+								})
 							}}
 						>
 							<Animated.View
-								/* Footer background */
-								style={[{
-									height: '100%',
-									backgroundColor: '#F6F6F6',
-									borderTopLeftRadius: 30,
-									borderTopRightRadius: 30,
+								/* Footer separator bar */
+								style={{
+									width: '30%',
+									marginVertical: 10,
+									height: 3,
+									borderRadius: 9999,
+									backgroundColor: '#000000',
+								}}
+							></Animated.View>
+							<View
+								/* Form container */
+								style={{
 									display: 'flex',
+									gap: 30,
 									alignItems: 'center',
-									// ...animatedFooterStyle,
-									transform: [{translateY: refTop.current}]
-								},
-									// animatedFooterStyle
-								]}
+									width: '100%',
+									paddingHorizontal: 38,
+									paddingVertical: 30,
+								}}
 							>
-								<Animated.View
-									/* Footer separator bar */
-									style={{
-										width: '30%',
-										marginVertical: 10,
-										height: 3,
-										borderRadius: 9999,
-										backgroundColor: '#000000',
-									}}
-
-								></Animated.View>
-
-							</Animated.View>
-						</View>
-					</GestureDetector>
-
+								  <Text
+									  /* Form title */
+									  style={{
+										  fontSize: 18,
+										  fontFamily: 'Poppins_Medium',
+									  }}
+								  >Sign in to your account</Text>
+								  <AuthenticationInputField
+									  type={'emailAddress'}
+									  placeholder={'Email'}
+									  value={email}
+									  onChange={(event) => {setEmail(event)}}
+								  />
+								  <AuthenticationInputField
+									  type={'password'}
+									  placeholder={'Password'}
+									  value={password}
+									  onChange={(event) => {setPassword(event)}}
+								  />
+								  <View
+									  /* Connect buttons */
+									  style={{
+										  display: 'flex',
+										  flexDirection: 'row',
+										  gap: 14,
+										  width: '100%'
+									  }}
+								  >
+									<AuthenticationButton
+										/* Connect button */
+										type={'string'}
+										value={'Connect'}
+										style={{flex: 1,}}
+									/>
+									<AuthenticationButton
+										/* Connect with google button */
+										type={'icon'}
+										icon={<AntDesign name="google" size={24} color="white" />}
+									/>
+									<AuthenticationButton
+										/* Connect with facebook button */
+										type={'icon'}
+										icon={<Entypo name="facebook" size={24} color="white" />}
+									/>
+								  </View>
+								  <View
+									  /* Register link */
+									  style={{
+										  display: 'flex',
+										  flexDirection: 'row',
+									  }}
+								  >
+									<Text>You don't have an account ? </Text>
+									<Text
+										style={{color: '#AA4444', fontWeight: 'bold'}}
+									>Register</Text>
+								  </View>
+							</View>
+						</Animated.View>
+					</Animated.View>
+				</GestureDetector>
+				<View
+					/* Swipe up indicator */
+					style={{
+						position: 'absolute',
+						bottom: 90,
+						width: '100%',
+						height: 50,
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						gap: 10,
+						zIndex: -1,
+					}}
+				>
+					<View
+						/* Swipe up icon */
+						style={{
+							width: 50,
+							height: 50,
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+						}}
+					>
+						<SwipeUpIcon/>
+					</View>
+					<Text
+						/* Swipe up text */
+						style={{
+							color: '#AEAEAE',
+							fontSize: 16,
+							fontFamily: 'Poppins_Medium',
+						}}
+					>Swipe Up</Text>
 				</View>
-			</LinearGradient>
+			</View>
+		</LinearGradient>
 	)
 }
 
 export default SignInScreen
+
+/** TODO
+ * [ ] - FIx input padding
+ * [ ] change header text when form is hidden
+ */
