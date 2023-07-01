@@ -46,7 +46,7 @@ const SignInScreen = ({navigation}: any) => {
 	const [headerText, setHeaderText] = React.useState<string[]>(TEXT_WHEN_HIDDEN)
 
 	/* Shared values */
-	const topValue = useSharedValue<number>(0);
+	const topValue = useSharedValue<number>(footerDimensions.height - 50);
 	const swipeUpOpacity = useSharedValue<number>(0);
 
 	/**
@@ -73,7 +73,7 @@ const SignInScreen = ({navigation}: any) => {
 		})
 		.onUpdate((event) => {
 			const dir = event.velocityY > 0 ? 1 : -1;
-			topValue.value = Math.min(Math.max(topValue.value + (event.translationY / 6), 0), footerDimensions.height / 2);
+			topValue.value = Math.min(Math.max(topValue.value + (event.translationY), 0), footerDimensions.height / 2);
 		})
 		.onEnd(() => {
 			if (topValue.value < footerDimensions.height / 2) {
