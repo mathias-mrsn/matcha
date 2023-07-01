@@ -2,11 +2,11 @@
 import {LinearGradient} from "expo-linear-gradient";
 import React from "react";
 import {View, Text, useWindowDimensions, Image} from "react-native";
-import {Gesture, GestureDetector} from "react-native-gesture-handler";
+import {Gesture, GestureDetector, PanGesture} from "react-native-gesture-handler";
 import Animated, {
-	Easing,
+	Easing, runOnJS, runOnUI,
 	useAnimatedGestureHandler,
-	useAnimatedStyle,
+	useAnimatedStyle, useDerivedValue,
 	useSharedValue,
 	withSpring,
 	withTiming
@@ -19,9 +19,18 @@ import AuthenticationInputField from "../../components/AuthenticationInputField/
 /* Icons */
 import {AntDesign, Entypo} from "@expo/vector-icons";
 import SwipeUpIcon from "../../assets/jsx-icons/SwipeUpIcon";
+import {Link} from "expo-router";
 
 /* Constants */
 const SCREEN_MAX_WIDTH = 600
+const TEXT_WHEN_SHOWN = [
+	'Hi.',
+	'Glad to see you here !',
+]
+const TEXT_WHEN_HIDDEN = [
+	'Welcome.',
+	'Join matcha and find many people who share your interests !'
+]
 
 const SignInScreen = ({navigation}: any) => {
 	/* States */
@@ -34,6 +43,7 @@ const SignInScreen = ({navigation}: any) => {
 		width: 0,
 		height: 0,
 	});
+	const [headerText, setHeaderText] = React.useState<string[]>(TEXT_WHEN_HIDDEN)
 
 	/* Shared values */
 	const topValue = useSharedValue<number>(0);
@@ -53,10 +63,11 @@ const SignInScreen = ({navigation}: any) => {
 		};
 	});
 
+
 	/**
 	 * Function to handle the swipe up gesture
 	 */
-	const handleGesture = Gesture.Pan()
+	const handleGesture : PanGesture = Gesture.Pan()
 		.onBegin(() => {
 			console.log('Begin')
 		})
@@ -68,10 +79,12 @@ const SignInScreen = ({navigation}: any) => {
 			if (topValue.value < footerDimensions.height / 2) {
 				topValue.value = 0;
 				swipeUpOpacity.value = 0;
+				runOnJS(setHeaderText)(TEXT_WHEN_SHOWN);
 			}
 			else {
 				topValue.value = footerDimensions.height - 50;
 				swipeUpOpacity.value = 1;
+				runOnJS(setHeaderText)(TEXT_WHEN_HIDDEN);
 			}
 		});
 
@@ -88,6 +101,7 @@ const SignInScreen = ({navigation}: any) => {
 				justifyContent: 'center',
 			}}
 		>
+			<GestureDetector gesture={handleGesture}>
 			<View
 				/* Wrap the screen for web usage */
 				style={{
@@ -123,19 +137,12 @@ const SignInScreen = ({navigation}: any) => {
 							flexDirection: 'column',
 						}}
 					>
-						{/*{true == true ? (*/}
-						{/*	<>*/}
-							<Text>Hello.{"\n"}</Text>
+							<Text>{headerText[0]}{"\n"}</Text>
 							<Text
 								style={{color: '#ffffff'}}
-							>Great to see you !</Text>
-						{/*	</>*/}
-						{/*) : (*/}
-						{/*	<></>*/}
-						{/*)}*/}
+							>{headerText[1]}</Text>
 					</Text>
 				</View>
-				<GestureDetector gesture={handleGesture}>
 					<Animated.View
 						/* Footer container */
 						style={{
@@ -237,14 +244,15 @@ const SignInScreen = ({navigation}: any) => {
 									  }}
 								  >
 									<Text>You don't have an account ? </Text>
-									<Text
+									<Link
+										to={'/register'}
+										href={'/register'}
 										style={{color: '#AA4444', fontWeight: 'bold'}}
-									>Register</Text>
+									>Register</Link>
 								  </View>
 							</View>
 						</Animated.View>
 					</Animated.View>
-				</GestureDetector>
 				<View
 					/* Swipe up indicator */
 					style={{
@@ -281,6 +289,7 @@ const SignInScreen = ({navigation}: any) => {
 					>Swipe Up</Text>
 				</View>
 			</View>
+			</GestureDetector>
 		</LinearGradient>
 	)
 }
@@ -288,6 +297,6 @@ const SignInScreen = ({navigation}: any) => {
 export default SignInScreen
 
 /** TODO
- * [ ] - FIx input padding
+ * [x] - FIx input padding
  * [ ] change header text when form is hidden
  */
