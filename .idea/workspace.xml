@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="save">
+    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="SignIn done, need to rework on useSwipe later">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/hooks/useSwipe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/hooks/useSwipe.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/mathias.mrsn/42/matcha/requirements/client/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -59,7 +60,7 @@
       <recent name="$PROJECT_DIR$/requirements/client/screens/SignIn" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.ios">
+  <component name="RunManager" selected="npm.web">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -109,8 +110,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.ios" />
         <item itemvalue="npm.web" />
+        <item itemvalue="npm.ios" />
         <item itemvalue="Docker.docker-compose.yml.client: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
@@ -145,6 +146,8 @@
       <workItem from="1688112833622" duration="19335000" />
       <workItem from="1688148370973" duration="3873000" />
       <workItem from="1688219708771" duration="36000" />
+      <workItem from="1688219884031" duration="7838000" />
+      <workItem from="1688302084434" duration="7860000" />
     </task>
     <task id="LOCAL-00001" summary="few packages installed for client side">
       <created>1687267628023</created>
@@ -208,7 +211,23 @@
       <option name="project" value="LOCAL" />
       <updated>1687983655205</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="gap inside Text Input fixed, Thread error with useState fixed. Need to export useSwipe component for future usage">
+      <option name="closed" value="true" />
+      <created>1688223537473</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1688223537473</updated>
+    </task>
+    <task id="LOCAL-00010" summary="SignIn done, need to rework on useSwipe later">
+      <option name="closed" value="true" />
+      <created>1688227291118</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1688227291118</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,7 +256,9 @@
     <MESSAGE value="expo router used. TODO : import Poppins Font and find a way to swipe up the form on signin page" />
     <MESSAGE value="save before merge" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="gap inside Text Input fixed, Thread error with useState fixed. Need to export useSwipe component for future usage" />
+    <MESSAGE value="SignIn done, need to rework on useSwipe later" />
+    <option name="LAST_COMMIT_MESSAGE" value="SignIn done, need to rework on useSwipe later" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

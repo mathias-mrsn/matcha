@@ -20,9 +20,12 @@ import AuthenticationInputField from "../../components/AuthenticationInputField/
 import {AntDesign, Entypo} from "@expo/vector-icons";
 import SwipeUpIcon from "../../assets/jsx-icons/SwipeUpIcon";
 import {Link} from "expo-router";
+import useSwipe from "../../hooks/useSwipe";
+import {opacity} from "react-native-reanimated/lib/types/lib";
 
 /* Constants */
 const SCREEN_MAX_WIDTH = 600
+const FOOTER_HEIGHT = 450
 const TEXT_WHEN_SHOWN = [
 	'Hi.',
 	'Glad to see you here !',
@@ -36,57 +39,45 @@ const SignInScreen = ({navigation}: any) => {
 	/* States */
 	const [email, setEmail] = React.useState<string>('')
 	const [password, setPassword] = React.useState<string>('')
-	const [footerDimensions, setFooterDimensions] = React.useState<{
-		width: number,
-		height: number,
-	}>({
-		width: 0,
-		height: 0,
-	});
 	const [headerText, setHeaderText] = React.useState<string[]>(TEXT_WHEN_HIDDEN)
 
-	/* Shared values */
-	const topValue = useSharedValue<number>(footerDimensions.height - 50);
-	const swipeUpOpacity = useSharedValue<number>(0);
+	/* Hooks */
+	const {handleSwipe, swipeDistance, swipePercentage} = useSwipe({
+		direction: 'vertical',
+		minDistance: 1,
+		fullDistance: FOOTER_HEIGHT - 50,
+		bounder: FOOTER_HEIGHT / 2,
+		WhileSwiping: (distance) => {
+			if (distance < FOOTER_HEIGHT / 2) {
+				runOnJS(setHeaderText)(TEXT_WHEN_HIDDEN);
+			}
+			else {
+				runOnJS(setHeaderText)(TEXT_WHEN_SHOWN);
+			}
+		}
+	})
 
 	/**
-	 * Animated style for the footer
+	 * Animated styles for the footer and the opacity of the swipe up icon
 	 */
 	const animatedFooterStyle = useAnimatedStyle(() => {
 		return {
 			transform: [
-				{translateY: withTiming(topValue.value, {
-					duration: 100,
+				{translateY: withTiming((FOOTER_HEIGHT - 50) -swipeDistance.value, {
+					duration: 200,
 					easing: Easing.linear,
 				})}
 			]
 		};
 	});
-
-
-	/**
-	 * Function to handle the swipe up gesture
-	 */
-	const handleGesture : PanGesture = Gesture.Pan()
-		.onBegin(() => {
-			console.log('Begin')
-		})
-		.onUpdate((event) => {
-			const dir = event.velocityY > 0 ? 1 : -1;
-			topValue.value = Math.min(Math.max(topValue.value + (event.translationY), 0), footerDimensions.height / 2);
-		})
-		.onEnd(() => {
-			if (topValue.value < footerDimensions.height / 2) {
-				topValue.value = 0;
-				swipeUpOpacity.value = 0;
-				runOnJS(setHeaderText)(TEXT_WHEN_SHOWN);
-			}
-			else {
-				topValue.value = footerDimensions.height - 50;
-				swipeUpOpacity.value = 1;
-				runOnJS(setHeaderText)(TEXT_WHEN_HIDDEN);
-			}
-		});
+	const opacityStyle = useAnimatedStyle(() => {
+		return {
+			opacity: withTiming((100 - swipePercentage.value) / 100, {
+						duration: 200,
+						easing: Easing.linear,
+			})
+		};
+	});
 
 	return (
 		<LinearGradient
@@ -96,79 +87,72 @@ const SignInScreen = ({navigation}: any) => {
 				position: 'absolute',
 				width: '100%',
 				height: '100%',
-				flex: 1,
 				alignItems: 'center',
 				justifyContent: 'center',
 			}}
 		>
-			<GestureDetector gesture={handleGesture}>
-			<View
-				/* Wrap the screen for web usage */
-				style={{
-					position: 'relative',
-					width: '100%',
-					maxWidth: SCREEN_MAX_WIDTH,
-					height: '100%',
-					display: 'flex',
-					flexDirection: 'column',
-					overflow: 'hidden',
-				}}
-			>
+			<GestureDetector gesture={handleSwipe}>
 				<View
-					/* Header container */
+					/* Wrap the screen for web usage */
 					style={{
-						flex: 1,
+						position: 'relative',
 						width: '100%',
+						maxWidth: SCREEN_MAX_WIDTH,
+						height: '100%',
+						display: 'flex',
+						flexDirection: 'column',
+						overflow: 'hidden',
 					}}
 				>
-					<Text
-						/* Header title */
+					<View
+						/* Header container */
 						style={{
-							textShadowColor: 'rgba(0, 0, 0, 0.25)',
-							textShadowOffset: {width: 0, height: 4},
-							textShadowRadius: 4,
-							fontSize: 32,
-							fontFamily: 'Poppins_SemiBold',
-							letterSpacing: 1.28,
-							position: 'absolute',
-							bottom: 0,
-							margin: 40,
-							display: 'flex',
-							flexDirection: 'column',
+							flex: 1,
+							width: '100%',
 						}}
 					>
-							<Text>{headerText[0]}{"\n"}</Text>
-							<Text
-								style={{color: '#ffffff'}}
-							>{headerText[1]}</Text>
-					</Text>
-				</View>
+						<Text
+							/* Header title */
+							style={{
+								textShadowColor: 'rgba(0, 0, 0, 0.25)',
+								textShadowOffset: {width: 0, height: 4},
+								textShadowRadius: 4,
+								fontSize: 32,
+								fontFamily: 'Poppins_SemiBold',
+								letterSpacing: 1.28,
+								position: 'absolute',
+								bottom: 0,
+								margin: 40,
+								display: 'flex',
+								flexDirection: 'column',
+							}}
+						>
+								<Text>{headerText[0]}{"\n"}</Text>
+								<Text
+									style={{color: '#ffffff'}}
+								>{headerText[1]}</Text>
+						</Text>
+					</View>
 					<Animated.View
 						/* Footer container */
 						style={{
 							width: '100%',
-							flex: 1,
+							height: FOOTER_HEIGHT,
 						}}
 					>
 						<Animated.View
 							/* Footer background */
 							style={[{
 								height: '100%',
-								backgroundColor: '#F6F6F6',
-								borderTopLeftRadius: 30,
-								borderTopRightRadius: 30,
 								display: 'flex',
 								alignItems: 'center',
 								zIndex: 1,
+								backgroundColor: '#F6F6F6',
+								borderTopLeftRadius: 30,
+								borderTopRightRadius: 30,
 							},
 								animatedFooterStyle
 							]}
-							onLayout={(event) => {
-								setFooterDimensions({
-									width: event.nativeEvent.layout.width,
-									height: event.nativeEvent.layout.height,
-								})
-							}}
 						>
 							<Animated.View
 								/* Footer separator bar */
@@ -245,7 +229,7 @@ const SignInScreen = ({navigation}: any) => {
 								  >
 									<Text>You don't have an account ? </Text>
 									<Link
-										to={'/register'}
+										// to={'/register'}
 										href={'/register'}
 										style={{color: '#AA4444', fontWeight: 'bold'}}
 									>Register</Link>
@@ -253,50 +237,48 @@ const SignInScreen = ({navigation}: any) => {
 							</View>
 						</Animated.View>
 					</Animated.View>
-				<View
-					/* Swipe up indicator */
-					style={{
-						position: 'absolute',
-						bottom: 90,
-						width: '100%',
-						height: 50,
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-						gap: 10,
-						zIndex: -1,
-					}}
-				>
-					<View
-						/* Swipe up icon */
-						style={{
-							width: 50,
+					<Animated.View
+						/* Swipe up indicator */
+						style={[{
+							position: 'absolute',
+							bottom: 500,
+							width: '100%',
 							height: 50,
 							display: 'flex',
 							alignItems: 'center',
 							justifyContent: 'center',
-						}}
+							gap: 10,
+							zIndex: -1,
+						},
+							animatedFooterStyle,
+							opacityStyle,
+						]}
 					>
-						<SwipeUpIcon/>
-					</View>
-					<Text
-						/* Swipe up text */
-						style={{
-							color: '#AEAEAE',
-							fontSize: 16,
-							fontFamily: 'Poppins_Medium',
-						}}
-					>Swipe Up</Text>
+						<View
+							/* Swipe up icon */
+							style={{
+								width: 50,
+								height: 50,
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+							}}
+						>
+							<SwipeUpIcon/>
+						</View>
+						<Text
+							/* Swipe up text */
+							style={{
+								color: '#AEAEAE',
+								fontSize: 16,
+								fontFamily: 'Poppins_Medium',
+							}}
+						>Swipe Up</Text>
+					</Animated.View>
 				</View>
-			</View>
 			</GestureDetector>
 		</LinearGradient>
 	)
 }
 
 export default SignInScreen
-
-/** TODO
- * [x] - FIx input padding
- * [ ] change header text when form is hidden
- */
