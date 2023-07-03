@@ -8,7 +8,7 @@ type AuthenticationButtonProps = {
     type: 'string' | 'icon',
     value?: string,
     icon?: any,
-
+    onClicked?: () => void,
     style?: any,
 }
 
@@ -25,6 +25,9 @@ const AuthenticationButton = (props: AuthenticationButtonProps) => {
                 minWidth: 53,
                 borderRadius: 10,
                 ...props.style,
+            }}
+            onPress={() => {
+                props.onClicked && props.onClicked();
             }}
         >
             { props.type === 'string' ? (

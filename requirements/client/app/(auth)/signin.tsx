@@ -1,7 +1,7 @@
 /* Libraries */
 import {LinearGradient} from "expo-linear-gradient";
 import React from "react";
-import {View, Text, useWindowDimensions, Image} from "react-native";
+import {View, Text, useWindowDimensions, Image, Button} from "react-native";
 import {Gesture, GestureDetector, PanGesture} from "react-native-gesture-handler";
 import Animated, {
 	Easing, runOnJS, runOnUI,
@@ -11,6 +11,7 @@ import Animated, {
 	withSpring,
 	withTiming
 } from "react-native-reanimated";
+import {useDispatch, useSelector} from "react-redux";
 
 /* Components */
 import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton"
@@ -21,7 +22,8 @@ import {AntDesign, Entypo} from "@expo/vector-icons";
 import SwipeUpIcon from "../../assets/jsx-icons/SwipeUpIcon";
 import {Link} from "expo-router";
 import useSwipe from "../../hooks/useSwipe";
-import {opacity} from "react-native-reanimated/lib/types/lib";
+import {HIDE_NOTIFICATION, SHOW_NOTIFICATION} from "../../constants";
+import {hideNotification, showNotification} from "../../actions/notification";
 
 /* Constants */
 const SCREEN_MAX_WIDTH = 600
@@ -78,6 +80,8 @@ const SignInScreen = ({navigation}: any) => {
 			})
 		};
 	});
+
+	const dispatch = useDispatch();
 
 	return (
 		<LinearGradient
@@ -175,7 +179,7 @@ const SignInScreen = ({navigation}: any) => {
 									paddingVertical: 30,
 								}}
 							>
-								  <Text
+								<Text
 									  /* Form title */
 									  style={{
 										  fontSize: 18,
@@ -208,6 +212,11 @@ const SignInScreen = ({navigation}: any) => {
 										type={'string'}
 										value={'Connect'}
 										style={{flex: 1,}}
+										onClicked={() => {dispatch(showNotification({
+											isShow: true,
+											type: 'error',
+											message: 'This feature is not available yet',
+										}))}}
 									/>
 									<AuthenticationButton
 										/* Connect with google button */
