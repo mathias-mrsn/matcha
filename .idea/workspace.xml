@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="expo router used. TODO : import Poppins Font and find a way to swipe up the form on signin page">
+    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="useSwipe done, and implemented inside signin.tsx">
+      <change afterPath="$PROJECT_DIR$/requirements/client/actions/notification.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/constants/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/layout/Notification.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/reducers/NotificationReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/store/ConfigureStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/type/redux.type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/_layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton/AuthenticationButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton/AuthenticationButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/hooks/useSwipe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/hooks/useSwipe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +26,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -34,17 +50,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "signin__mathias",
     "last_opened_file_path": "/Users/mathias.mrsn/42/matcha",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Problems",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "ts.external.directory.path": "/Users/mathias.mrsn/42/matcha/requirements/client/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -55,7 +71,7 @@
       <recent name="$PROJECT_DIR$/requirements/client/screens/SignIn" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.ios">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -105,8 +121,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web" />
         <item itemvalue="npm.ios" />
+        <item itemvalue="npm.web" />
         <item itemvalue="Docker.docker-compose.yml.client: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
@@ -137,7 +153,15 @@
       <workItem from="1687852800346" duration="36679000" />
       <workItem from="1687905773554" duration="11000" />
       <workItem from="1687905792160" duration="665000" />
-      <workItem from="1687942603165" duration="4099000" />
+      <workItem from="1687942603165" duration="12808000" />
+      <workItem from="1688112833622" duration="19335000" />
+      <workItem from="1688148370973" duration="3873000" />
+      <workItem from="1688219708771" duration="36000" />
+      <workItem from="1688219884031" duration="7838000" />
+      <workItem from="1688302084434" duration="9134000" />
+      <workItem from="1688378874494" duration="188000" />
+      <workItem from="1688379069244" duration="83000" />
+      <workItem from="1688379158412" duration="7958000" />
     </task>
     <task id="LOCAL-00001" summary="few packages installed for client side">
       <created>1687267628023</created>
@@ -185,7 +209,47 @@
       <option name="project" value="LOCAL" />
       <updated>1687906437340</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="save before merge">
+      <option name="closed" value="true" />
+      <created>1687946775253</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687946775253</updated>
+    </task>
+    <task id="LOCAL-00008" summary="save">
+      <option name="closed" value="true" />
+      <created>1687983655205</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1687983655205</updated>
+    </task>
+    <task id="LOCAL-00009" summary="gap inside Text Input fixed, Thread error with useState fixed. Need to export useSwipe component for future usage">
+      <option name="closed" value="true" />
+      <created>1688223537473</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1688223537473</updated>
+    </task>
+    <task id="LOCAL-00010" summary="SignIn done, need to rework on useSwipe later">
+      <option name="closed" value="true" />
+      <created>1688227291118</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1688227291118</updated>
+    </task>
+    <task id="LOCAL-00011" summary="useSwipe done, and implemented inside signin.tsx">
+      <option name="closed" value="true" />
+      <created>1688310862072</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1688310862072</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,18 +276,12 @@
     <MESSAGE value="client" />
     <MESSAGE value="SignIn page in progress. Need to rework the router and use the expo router" />
     <MESSAGE value="expo router used. TODO : import Poppins Font and find a way to swipe up the form on signin page" />
-    <option name="LAST_COMMIT_MESSAGE" value="expo router used. TODO : import Poppins Font and find a way to swipe up the form on signin page" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx</url>
-          <line>118</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="save before merge" />
+    <MESSAGE value="save" />
+    <MESSAGE value="gap inside Text Input fixed, Thread error with useState fixed. Need to export useSwipe component for future usage" />
+    <MESSAGE value="SignIn done, need to rework on useSwipe later" />
+    <MESSAGE value="useSwipe done, and implemented inside signin.tsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="useSwipe done, and implemented inside signin.tsx" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
