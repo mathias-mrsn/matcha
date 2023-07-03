@@ -19,8 +19,8 @@ type AuthenticationInputFieldProps = {
 const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
     const refPlaceFolder = React.useRef<{
         y: Animated.Value,
-        scale: Animated.Value,
-    }>({y: new Animated.Value(18), scale: new Animated.Value(1)});
+        font: Animated.Value,
+    }>({y: new Animated.Value(18), font: new Animated.Value(14)});
 
     const [isPasswordVisible, setIsPasswordVisible] = React.useState<boolean>(false);
 
@@ -30,8 +30,8 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
             duration: 200,
             useNativeDriver: false,
         }).start();
-        Animated.timing(refPlaceFolder.current.scale, {
-            toValue: 0.7,
+        Animated.timing(refPlaceFolder.current.font, {
+            toValue: 10,
             duration: 200,
             useNativeDriver: false,
         }).start();
@@ -44,8 +44,8 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
             duration: 200,
             useNativeDriver: false,
         }).start();
-        Animated.timing(refPlaceFolder.current.scale, {
-            toValue: 1,
+        Animated.timing(refPlaceFolder.current.font, {
+            toValue: 14,
             duration: 200,
             useNativeDriver: false,
         }).start();
@@ -83,21 +83,19 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
             <Animated.Text
                 style={{
                     position: 'absolute',
-                    transform: [
-                        {scale: refPlaceFolder.current.scale},
-                        {translateY: refPlaceFolder.current.y},
-                    ],
+                    transform: [{translateY: refPlaceFolder.current.y},],
                     left: 24,
                     color: '#8E8E8E',
                     fontFamily: 'Poppins_Medium',
-                    fontSize: 14,
+                    fontSize: refPlaceFolder.current.font
                 }}
             >
                 {props.placeholder}</Animated.Text>
             { props.type === 'password' && (
                 <Ionicons
-                    name={isPasswordVisible ? 'eye-off' : 'eye'}
+                    name={isPasswordVisible ? 'eye' : 'eye-off'}
                     style={{
+                        color: '#8E8E8E',
                         position: 'absolute',
                         width: 24,
                         height: 24,
