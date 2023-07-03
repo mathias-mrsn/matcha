@@ -64,7 +64,7 @@ function RootLayoutNav() {
     <>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Provider store={store}>
-          {/*<Notification/>*/}
+          <Notification/>
           <Stack>
             <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
             <Stack.Screen name="modal" options={{ presentation: 'modal' }} />

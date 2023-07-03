@@ -1,7 +1,8 @@
 import {
 	HIDE_NOTIFICATION,
 	SHOW_NOTIFICATION
-} from '../constants';
+} from '../constants/notification.constant';
+import {NotificationState} from "../types/notification.type";
 
 const initialState : NotificationState = {
 	isShow: false,
