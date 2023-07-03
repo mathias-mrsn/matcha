@@ -22,8 +22,9 @@ import {AntDesign, Entypo} from "@expo/vector-icons";
 import SwipeUpIcon from "../../assets/jsx-icons/SwipeUpIcon";
 import {Link} from "expo-router";
 import useSwipe from "../../hooks/useSwipe";
-import {HIDE_NOTIFICATION, SHOW_NOTIFICATION} from "../../constants";
-import {hideNotification, showNotification} from "../../actions/notification";
+import {showNotification} from "../../actions/notification";
+
+import Notification from "../../layout/Notification";
 
 /* Constants */
 const SCREEN_MAX_WIDTH = 600
@@ -95,6 +96,7 @@ const SignInScreen = ({navigation}: any) => {
 				justifyContent: 'center',
 			}}
 		>
+			<Notification />
 			<GestureDetector gesture={handleSwipe}>
 				<View
 					/* Wrap the screen for web usage */
@@ -214,7 +216,7 @@ const SignInScreen = ({navigation}: any) => {
 										style={{flex: 1,}}
 										onClicked={() => {dispatch(showNotification({
 											isShow: true,
-											type: 'error',
+											type: 'warning',
 											message: 'This feature is not available yet',
 										}))}}
 									/>

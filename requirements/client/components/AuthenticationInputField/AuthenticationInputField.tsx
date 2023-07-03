@@ -80,17 +80,26 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
                 onBlur={handleOffFocus}
                 maxLength={50}
             />
-            <Animated.Text
+            <View
+                pointerEvents={'none'}
                 style={{
                     position: 'absolute',
-                    transform: [{translateY: refPlaceFolder.current.y},],
-                    left: 24,
-                    color: '#8E8E8E',
-                    fontFamily: 'Poppins_Medium',
-                    fontSize: refPlaceFolder.current.font
+                    width: '100%',
+                    height: 53,
                 }}
             >
-                {props.placeholder}</Animated.Text>
+                <Animated.Text
+                    style={{
+                        position: 'absolute',
+                        transform: [{translateY: refPlaceFolder.current.y},],
+                        left: 24,
+                        color: '#8E8E8E',
+                        fontFamily: 'Poppins_Medium',
+                        fontSize: refPlaceFolder.current.font
+                    }}
+                >
+                    {props.placeholder}</Animated.Text>
+            </View>
             { props.type === 'password' && (
                 <Ionicons
                     name={isPasswordVisible ? 'eye' : 'eye-off'}

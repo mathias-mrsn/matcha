@@ -8,6 +8,7 @@ const initialState : NotificationState = {
 	isShow: false,
 	message: '',
 	type: 'success',
+	onClicked: undefined,
 };
 const NotificationReducer = (state : NotificationState = initialState, action: any) => {
 	switch(action.type) {
@@ -22,6 +23,7 @@ const NotificationReducer = (state : NotificationState = initialState, action: a
 				isShow: false,
 				message: '',
 				type: 'success',
+				onClicked: undefined
 			}
 		}
 		default:
