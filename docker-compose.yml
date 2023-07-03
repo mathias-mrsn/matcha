@@ -2,21 +2,23 @@ version: '3'
 
 services:
 
-  mysqldb:
+  mysql:
     image: mysql:5.7.22
     restart: always
-    command: --default_authentication_plugin=mysql_native_password
+    # command: --default_authentication_plugin=mysql_native_password
     environment:
-      MYSQL_DATABASE: 'mysql_db_matcha'
-      MYSQL_USER: 'ldermign'
-      MYSQL_PASSWORD: 'Motdepasse42'
+      MYSQL_DATABASE: 'mysql'
+      # MYSQL_USER: 'ldermign'
+      # MYSQL_PASSWORD: 'Motdepasse42'
       MYSQL_ROOT_PASSWORD: Motdepasse42DB
-    ports: 
-      - 3307:3306
+      # MYSQL_TCP_PORT: 3306
+    # ports: 
+    #   - 3307:3306
     networks:
       - shared-network
     volumes:
       - mysql-data:/var/lib/mysql
+      # - ./requirements/docker/init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file: ./.env
     
   server:
@@ -24,7 +26,7 @@ services:
     hostname: server
     restart: unless-stopped
     build:
-      context: requirements/server
+      context: requirements/server/
       target: production
       dockerfile: Dockerfile
     ports: 
@@ -32,23 +34,27 @@ services:
     networks:
       - shared-network
     depends_on:
-      - mysqldb  
+      - mysql  
   
   client:
     container_name: client
     hostname: client
     restart: unless-stopped
     build:
-      context: requirements/client
+      context: requirements/client/
       target: production
       dockerfile: Dockerfile
-    ports: 
-      # - 8080:8081
-      - 4200:4200
+    ports:
       - 19000:19000
+      - 19001:19001
+      - 19002:19002
+      - 19006:19006
     environment:
       - MODE=production
-      - PORT=4200
+      # error dockerfile :
+    # volumes:
+    #   - ./requirements/client:/usr/client
+    # working_dir: /usr/client
     networks:
       - shared-network
     depends_on:
@@ -57,10 +63,15 @@ services:
 
   phpMyAdmin:
     image: phpmyadmin
+    container_name: phpmyadmin
+    hostname: phpmyadmin
     environment:
       PMA_ARBITRARY: 1
     ports:
       - "8080:80"
+    networks:
+      - shared-network
+    # network tamere hihihihihihihihihihihihihihihihih
 
 networks:
   shared-network:
