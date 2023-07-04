@@ -216,7 +216,7 @@ const SignInScreen = ({navigation}: any) => {
 										style={{flex: 1,}}
 										onClicked={() => {dispatch(showNotification({
 											isShow: true,
-											type: 'warning',
+											type: 'success',
 											message: 'This feature is not available yet',
 										}))}}
 									/>

@@ -1,38 +1,111 @@
+/* Libraries */
 import {useDispatch, useSelector} from "react-redux";
 import {
 	View,
 	Text,
-	Button,
-	TouchableOpacity
+	TouchableOpacity,
+	LayoutChangeEvent,
+	Animated,
 } from "react-native";
+import React, {
+	useEffect,
+	useRef,
+	useState
+} from "react";
 import Modal from "react-native-modal/dist/modal";
+
+/* Actions */
 import {hideNotification} from "../actions/notification";
+
+/* Types */
 import {NotificationIconDTO, NotificationState } from "types/notification.type";
-import React, {useEffect, useState } from "react";
-import { NotificationTypes } from "../constants/notification.constant";
+
+/* Services */
 import { getIconByType } from "../services/notification.service";
+
+/* Icons */
 import {AntDesign} from "@expo/vector-icons";
 
+/* Constants */
+import { NotificationTypes } from "../constants/notification.constant";
+
+/* Local constants */
+const NOTIFICATION_DURATION = 5000;
+
+/**
+ * @description Notification component
+ * This component is used to display a notification on the screen
+ * It is a modal that is displayed at the top of the screen
+ *
+ * This component uses the NotificationState from the redux store and its called in _layout.tsx
+ */
 const Notification = () => {
+	/* Redux */
 	const notification : NotificationState = useSelector((state: any) => state.notification);
 	const dispatch = useDispatch();
 
+	/* States */
 	const [icon, setIcon] = useState<NotificationIconDTO>(NotificationTypes[0]);
+	const [notificationDimensions, setNotificationDimensions] = useState<{width: number, height: number}>({
+		width: 0,
+		height: 0,
+	});
 
-	useEffect(() => {
-		if (!notification.isShow || !notification.type) return;
-		const icon: NotificationIconDTO = getIconByType(notification.type);
-		setIcon(icon);
-	}, [notification]);
+	/* Refs */
+	const refAnimation = useRef<Animated.Value>(new Animated.Value(0));
 
+	/**
+	 * Function called when the notification is rendered it will load the bar animation
+	 */
+	const loadBar = () => {
+		Animated.timing(refAnimation.current, {
+			toValue: notificationDimensions.width,
+			duration: NOTIFICATION_DURATION,
+			useNativeDriver: false,
+		}).start();
+	}
+
+	/**
+	 * Function called when the notification is closed it will reset the bar animation to 0
+	 */
+	const resetBar = () => {
+		Animated.timing(refAnimation.current, {
+			toValue: 0,
+			duration: 0,
+			useNativeDriver: false,
+		}).start();
+	}
+
+	/**
+	 * Function called when the notification closed or swiped
+	 */
 	const handleClose = () => {
-		console.log('close');
+		console.log('Notification: window closed');
+		resetBar();
 		dispatch(hideNotification());
 	}
 
+	useEffect(() => {
+		console.log('Notification: useEffect render');
+		if (!notification.isShow || !notification.type) return;
+
+		const icon: NotificationIconDTO = getIconByType(notification.type);
+		setIcon(icon);
+		loadBar();
+
+		const timeout = setTimeout(() => {
+			handleClose();
+		}, NOTIFICATION_DURATION);
+
+		return () => {
+			clearTimeout(timeout);
+			console.log('Notification: useEffect clear');
+		}
+	}, [notification]);
+
+
 	return (
 		<Modal
-
 			animationIn={'slideInDown'}
 			animationOut={'slideOutUp'}
 			animationInTiming={800}
@@ -54,7 +127,6 @@ const Notification = () => {
 			}}
 			pointerEvents={'auto'}
 			onSwipeComplete={handleClose}
-
 		>
 			<TouchableOpacity
 				disabled={!notification.onClicked}
@@ -76,6 +148,12 @@ const Notification = () => {
 						overflow: 'hidden',
 					}}
 					pointerEvents={'auto'}
+					onLayout={(e: LayoutChangeEvent) => {
+						setNotificationDimensions({
+							width: e.nativeEvent.layout.width,
+							height: e.nativeEvent.layout.height,
+						});
+					}}
 				>
 					<View
 						style={{
@@ -113,6 +191,19 @@ const Notification = () => {
 					>
 						<AntDesign name="close" size={24} color="#b6bbc4" />
 					</TouchableOpacity>
+					<Animated.View
+						style={{
+							position: 'absolute',
+							left: 0,
+							bottom: 0,
+							padding: 0,
+							margin: 0,
+							height: 4,
+							backgroundColor: `rgba(${icon.color}, 0.8)`,
+							width: refAnimation.current,
+						}}
+					>
+					</Animated.View>
 				</View>
 			</TouchableOpacity>
 		</Modal>
