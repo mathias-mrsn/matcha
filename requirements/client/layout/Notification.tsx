@@ -69,11 +69,7 @@ const Notification = () => {
 	 * Function called when the notification is closed it will reset the bar animation to 0
 	 */
 	const resetBar = () => {
-		Animated.timing(refAnimation.current, {
-			toValue: 0,
-			duration: 0,
-			useNativeDriver: false,
-		}).start();
+		refAnimation.current.setValue(0);
 	}
 
 	/**
@@ -87,6 +83,7 @@ const Notification = () => {
 
 	useEffect(() => {
 		console.log('Notification: useEffect render');
+		resetBar();
 		if (!notification.isShow || !notification.type) return;
 
 		const icon: NotificationIconDTO = getIconByType(notification.type);

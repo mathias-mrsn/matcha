@@ -1,17 +1,18 @@
 /* Libraries */
 import {LinearGradient} from "expo-linear-gradient";
 import React from "react";
-import {View, Text, useWindowDimensions, Image, Button} from "react-native";
-import {Gesture, GestureDetector, PanGesture} from "react-native-gesture-handler";
+import {View, Text} from "react-native";
+import {GestureDetector} from "react-native-gesture-handler";
 import Animated, {
-	Easing, runOnJS, runOnUI,
-	useAnimatedGestureHandler,
-	useAnimatedStyle, useDerivedValue,
-	useSharedValue,
-	withSpring,
+	Easing,
+	runOnJS,
+	useAnimatedStyle,
 	withTiming
 } from "react-native-reanimated";
-import {useDispatch, useSelector} from "react-redux";
+import {Link} from "expo-router";
+
+/* Redux */
+import {useDispatch} from "react-redux";
 
 /* Components */
 import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton"
@@ -20,13 +21,17 @@ import AuthenticationInputField from "../../components/AuthenticationInputField/
 /* Icons */
 import {AntDesign, Entypo} from "@expo/vector-icons";
 import SwipeUpIcon from "../../assets/jsx-icons/SwipeUpIcon";
-import {Link} from "expo-router";
+
+/* Hooks */
 import useSwipe from "../../hooks/useSwipe";
+
+/* Actions */
 import {showNotification} from "../../actions/notification";
 
+/* Layout */
 import Notification from "../../layout/Notification";
 
-/* Constants */
+/* Local constants */
 const SCREEN_MAX_WIDTH = 600
 const FOOTER_HEIGHT = 450
 const TEXT_WHEN_SHOWN = [
@@ -38,7 +43,7 @@ const TEXT_WHEN_HIDDEN = [
 	'Join matcha and find many people who share your interests !'
 ]
 
-const SignInScreen = ({navigation}: any) => {
+const SignInScreen = () => {
 	/* States */
 	const [email, setEmail] = React.useState<string>('')
 	const [password, setPassword] = React.useState<string>('')
@@ -224,6 +229,11 @@ const SignInScreen = ({navigation}: any) => {
 										/* Connect with google button */
 										type={'icon'}
 										icon={<AntDesign name="google" size={24} color="white" />}
+										onClicked={() => {dispatch(showNotification({
+											isShow: true,
+											type: 'error',
+											message: 'This is a test notification',
+										}))}}
 									/>
 									<AuthenticationButton
 										/* Connect with facebook button */
