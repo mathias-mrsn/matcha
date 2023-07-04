@@ -6,7 +6,7 @@ import {
     TextInputFocusEventData,
     Animated,
 } from "react-native";
-import React from "react";
+import React, {useEffect} from "react";
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -14,6 +14,7 @@ type AuthenticationInputFieldProps = {
     type: 'emailAddress' | 'password' | 'username',
     placeholder: string,
     value: string,
+    enableCheck?: boolean,
     onChange: (value: string) => void
 }
 const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
@@ -23,6 +24,7 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
     }>({y: new Animated.Value(18), font: new Animated.Value(14)});
 
     const [isPasswordVisible, setIsPasswordVisible] = React.useState<boolean>(false);
+    const [borderColor, setBorderColor] = React.useState<string>('#8E8E8E');
 
     const handleOnFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
         Animated.timing(refPlaceFolder.current.y, {
@@ -55,6 +57,42 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
         setIsPasswordVisible((current) => !current);
     }
 
+    useEffect(() => {
+        if (!props.enableCheck) return;
+        if (props.value.length === 0) {
+            setBorderColor('#8E8E8E');
+            return;
+        }
+        switch (props.type) {
+            case 'emailAddress': {
+                const regex = new RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$');
+                if (regex.test(props.value)) {
+                    setBorderColor('#54a942');
+                } else {
+                    setBorderColor('#FF0000');
+                }
+                break;
+            }
+            case 'password': {
+                const regex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})');
+                if (regex.test(props.value)) {
+                    setBorderColor('#54a942');
+                } else {
+                    setBorderColor('#FF0000');
+                }
+                break;
+            }
+            case 'username': {
+                const regex = new RegExp('^[a-zA-Z0-9._-]{3,}$');
+                if (regex.test(props.value)) {
+                    setBorderColor('#54a942');
+                } else {
+                    setBorderColor('#FF0000');
+                }
+            }
+        }
+    }, [props.value]);
+
     return (
         <View style={{
             position: 'relative',
@@ -71,7 +109,7 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
                     borderRadius: 10,
                     borderStyle: 'solid',
                     borderWidth: 1.5,
-                    borderColor: '#8E8E8E',
+                    borderColor: borderColor,
                     padding: 18,
                     paddingBottom: 10,
                     paddingLeft: 24,

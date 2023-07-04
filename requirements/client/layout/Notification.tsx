@@ -103,6 +103,7 @@ const Notification = () => {
 
 	return (
 		<Modal
+			/* Modal */
 			animationIn={'slideInDown'}
 			animationOut={'slideOutUp'}
 			animationInTiming={800}
@@ -126,6 +127,7 @@ const Notification = () => {
 			onSwipeComplete={handleClose}
 		>
 			<TouchableOpacity
+				/* Button to do something when clicked */
 				disabled={!notification.onClicked}
 				onPress={() => {
 					if (notification.onClicked) return;
@@ -134,6 +136,7 @@ const Notification = () => {
 				}}
 			>
 				<View
+					/* Background */
 					style={{
 						backgroundColor: '#ffffff',
 						borderRadius: 10,
@@ -153,6 +156,7 @@ const Notification = () => {
 					}}
 				>
 					<View
+						/* Icon */
 						style={{
 							width: 30,
 							height: 30,
@@ -166,6 +170,7 @@ const Notification = () => {
 						<AntDesign name={icon.icon as any} size={20} color={`rgba(${icon.color}, 0.8)`} />
 					</View>
 					<View
+						/* Message */
 						style={{
 							flex: 1,
 							paddingRight: 10,
@@ -177,6 +182,7 @@ const Notification = () => {
 						>{notification.message}</Text>
 					</View>
 					<TouchableOpacity
+						/* Close button */
 						style={{
 							width: 30,
 							height: 30,
@@ -189,6 +195,7 @@ const Notification = () => {
 						<AntDesign name="close" size={24} color="#b6bbc4" />
 					</TouchableOpacity>
 					<Animated.View
+						/* Bar animation */
 						style={{
 							position: 'absolute',
 							left: 0,

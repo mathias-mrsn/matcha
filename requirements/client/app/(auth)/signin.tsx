@@ -30,9 +30,13 @@ import {showNotification} from "../../actions/notification";
 
 /* Layout */
 import Notification from "../../layout/Notification";
+import HeaderText from "../../components/HeaderText/HeaderText";
+import RegularText from "../../components/RegularText/RegularText";
+
+/* Constants */
+import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
 
 /* Local constants */
-const SCREEN_MAX_WIDTH = 600
 const FOOTER_HEIGHT = 450
 const TEXT_WHEN_SHOWN = [
 	'Hi.',
@@ -122,27 +126,12 @@ const SignInScreen = () => {
 							width: '100%',
 						}}
 					>
-						<Text
-							/* Header title */
-							style={{
-								textShadowColor: 'rgba(0, 0, 0, 0.25)',
-								textShadowOffset: {width: 0, height: 4},
-								textShadowRadius: 4,
-								fontSize: 32,
-								fontFamily: 'Poppins_SemiBold',
-								letterSpacing: 1.28,
-								position: 'absolute',
-								bottom: 0,
-								margin: 40,
-								display: 'flex',
-								flexDirection: 'column',
-							}}
-						>
-								<Text>{headerText[0]}{"\n"}</Text>
-								<Text
-									style={{color: '#ffffff'}}
-								>{headerText[1]}</Text>
-						</Text>
+						<HeaderText
+							primary={headerText[0]}
+							primaryColor={'#000000'}
+							secondary={headerText[1]}
+							secondaryColor={'#ffffff'}
+						/>
 					</View>
 					<Animated.View
 						/* Footer container */
@@ -186,13 +175,10 @@ const SignInScreen = () => {
 									paddingVertical: 30,
 								}}
 							>
-								<Text
-									  /* Form title */
-									  style={{
-										  fontSize: 18,
-										  fontFamily: 'Poppins_Medium',
-									  }}
-								  >Sign in to your account</Text>
+								<RegularText
+									text={'Sign in to your account'}
+									lineNumber={1}
+								/>
 								  <AuthenticationInputField
 									  type={'emailAddress'}
 									  placeholder={'Email'}

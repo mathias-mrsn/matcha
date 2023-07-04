@@ -4,8 +4,8 @@ import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
-import { Provider} from "react-redux";
-import {store} from "../store/ConfigureStore";
+import { Provider } from "react-redux";
+import { store } from "../store/ConfigureStore";
 
 import Notification from "../layout/Notification";
 
@@ -66,7 +66,8 @@ function RootLayoutNav() {
         <Provider store={store}>
           <Stack>
             <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+            <Stack.Screen name="(auth)/register" options={{ headerShown: false }} />
+            {/*<Stack.Screen name="modal" options={{ presentation: 'modal' }} />*/}
           </Stack>
         </Provider>
       </ThemeProvider>
