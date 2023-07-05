@@ -9,6 +9,7 @@ import {
 import React, {useEffect} from "react";
 
 import Ionicons from '@expo/vector-icons/Ionicons';
+import {verifyEmail, verifyPassword, verifyUsername} from "../../services/authentication.service";
 
 type AuthenticationInputFieldProps = {
     type: 'emailAddress' | 'password' | 'username',
@@ -63,33 +64,21 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
             setBorderColor('#8E8E8E');
             return;
         }
-        switch (props.type) {
-            case 'emailAddress': {
-                const regex = new RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$');
-                if (regex.test(props.value)) {
-                    setBorderColor('#54a942');
-                } else {
-                    setBorderColor('#FF0000');
+        try {
+            switch (props.type) {
+                case 'emailAddress': {
+                    verifyEmail(props.value); break;
                 }
-                break;
-            }
-            case 'password': {
-                const regex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})');
-                if (regex.test(props.value)) {
-                    setBorderColor('#54a942');
-                } else {
-                    setBorderColor('#FF0000');
+                case 'password': {
+                    verifyPassword(props.value, props.value); break;
                 }
-                break;
-            }
-            case 'username': {
-                const regex = new RegExp('^[a-zA-Z0-9._-]{3,}$');
-                if (regex.test(props.value)) {
-                    setBorderColor('#54a942');
-                } else {
-                    setBorderColor('#FF0000');
+                case 'username': {
+                    verifyUsername(props.value); break;
                 }
             }
+            setBorderColor('#54a942');
+        } catch (e: any) {
+            setBorderColor('#FF0000');
         }
     }, [props.value]);
 

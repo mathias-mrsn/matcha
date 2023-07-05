@@ -2,19 +2,47 @@ import {
 	View,
 	Text,
 	ScrollView,
-	useWindowDimensions, SafeAreaView,
+	useWindowDimensions, SafeAreaView, LogBox,
 } from "react-native";
 import RegularText from "../../components/RegularText/RegularText";
 import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
 import AuthenticationInputField from "../../components/AuthenticationInputField/AuthenticationInputField";
-import React, {useState} from "react";
+import React, {useEffect, useReducer, useState} from "react";
 import {showNotification} from "../../actions/notification";
 import {AntDesign, Entypo} from "@expo/vector-icons";
 import {Link} from "expo-router";
 import RegisterProgressIndicator from "../../components/RegisterProgressIndicator/RegisterProgressIndicator";
 import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
 import { useRouter } from "expo-router";
+import {verifyEmail, verifyPassword, verifyUsername} from "../../services/authentication.service";
+import {useDispatch} from "react-redux";
+import CarouselHobbies from "../../components/CarouselHobbies/CarouselHobbies";
 
+type _ReducerState = {
+	emailAddress: string,
+	username: string,
+	password: string,
+	confirmPassword: string,
+	hobbies: string[],
+	picture: string[],
+}
+
+const initialState : _ReducerState = {
+	emailAddress: '',
+	username: '',
+	password: '',
+	confirmPassword: '',
+	hobbies: [],
+	picture: ['', '', '', '', ''],
+}
+
+const reducer = (state: _ReducerState = initialState, action: any) : void => {
+	switch (action.type) {
+		case 'SET_EMAIL_ADDRESS': {
+			state.emailAddress = action.payload;
+		}
+	}
+}
 
 const SignInScreen = () => {
 
@@ -23,22 +51,55 @@ const SignInScreen = () => {
 	const [username, setUsername] = useState<string>('');
 	const [confirmPassword, setConfirmPassword] = useState<string>('');
 
+	const [width, setWidth] = useState<number>(0);
+
+	// const [state, localDispatch] = useReducer(reducer, initialState);
+
+	useEffect(() => {
+		LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
+	}, [])
+
+	const [pageIndex, setPageIndex] = useState<number>(1);
+
 	const scrollRef = React.useRef<ScrollView>(null);
 
-	const {width} = useWindowDimensions();
+	// const {width} = useWindowDimensions();
 
 	const router = useRouter();
 
-	const handleNext = (fromIndex: number, ToIndex: number) => {
+	const dispatch = useDispatch();
+
+	const handlePage = (ToIndex: number) => {
 		if (scrollRef.current) {
+			// try {
+			// 	switch (pageIndex) {
+			// 		case 1: {
+			// 			verifyEmail(emailAddress);
+			// 			verifyUsername(username);
+			// 			verifyPassword(password, confirmPassword);
+			// 			break;
+			// 		}
+			// 	}
+			// } catch (e: any) {
+			// 	dispatch(showNotification({
+			// 		type: 'error',
+			// 		message: e.message,
+			// 	}));
+			// 	return;
+			// }
 
 			scrollRef.current.scrollTo({
-				x: width * (ToIndex - fromIndex),
+				x: width * (ToIndex - 1),
 				y: 0,
 				animated: true,
 			});
+			setPageIndex(ToIndex);
 		}
 	}
+
+	useEffect(() => {
+		console.log(width);
+	}, [width])
 
 	return (
 		<View
@@ -58,6 +119,9 @@ const SignInScreen = () => {
 					height: '100%',
 					backgroundColor: '#fff',
 				}}
+				onLayout={(event) => {
+					setWidth(event.nativeEvent.layout.width);
+				}}
 			>
 				<View
 					/* Upper part for progress */
@@ -69,7 +133,7 @@ const SignInScreen = () => {
 						maxWidth: SCREEN_MAX_WIDTH,
 					}}
 				>
-					<RegisterProgressIndicator index={1} maxIndex={4}/>
+					<RegisterProgressIndicator index={pageIndex} maxIndex={4}/>
 				</View>
 				<ScrollView
 					/* Carousel of pages */
@@ -80,7 +144,6 @@ const SignInScreen = () => {
 					scrollEnabled={false}
 					ref={scrollRef}
 					style={{
-						width: '100%',
 						maxWidth: SCREEN_MAX_WIDTH,
 						flex: 0.7,
 					}}
@@ -172,7 +235,7 @@ const SignInScreen = () => {
 										type={'string'}
 										value={'Next'}
 										style={{flex: 1,}}
-										onClicked={() => {}}
+										onClicked={() => {handlePage(2)}}
 									/>
 								</View>
 								<View
@@ -218,13 +281,64 @@ const SignInScreen = () => {
 					{/* -------------------------------------------------- */}
 
 					<View
+						/* Second page container */
 						style={{
 							width: width,
+							maxWidth: SCREEN_MAX_WIDTH,
 							height: '100%',
-							backgroundColor: '#FF00FF',
+							alignItems: 'center',
+							overflow: 'hidden',
 						}}
 					>
-						<Text>Sign In</Text>
+						<View
+							style={{
+								width: width,
+								maxWidth: SCREEN_MAX_WIDTH,
+								height: '100%',
+								gap: 30,
+								alignItems: 'center',
+								paddingHorizontal: 38,
+							}}
+						>
+							<RegularText text={'Tell us more about what you like'} lineNumber={1}/>
+							<View
+								style={{gap: 15,}}
+							>
+								<CarouselHobbies width={width}/>
+							</View>
+							<View
+								/* Buttons container */
+								style={{
+									flexDirection: 'row',
+									gap: 14,
+									width: '100%',
+								}}
+							>
+								<AuthenticationButton
+									type={"icon"}
+									icon={<AntDesign name="left" size={24} color="white" />}
+									onClicked={() => {handlePage(1)}}
+								/>
+								<AuthenticationButton
+									type={"string"}
+									value={"Next"}
+									style={{flex: 1,}}
+									onClicked={() => {handlePage(3)}}
+								/>
+							</View>
+						</View>
+					</View>
+
+					<View
+						/* First page container */
+						style={{
+							width: width,
+							maxWidth: SCREEN_MAX_WIDTH,
+							height: '100%',
+							alignItems: 'center',
+						}}
+					>
+						<Text>salut</Text>
 					</View>
 
 				</ScrollView>

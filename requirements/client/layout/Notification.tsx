@@ -119,7 +119,6 @@ const Notification = () => {
 				width: '100%',
 				height: 70,
 				alignSelf: 'center',
-
 				maxHeight: 70,
 				paddingHorizontal: 20,
 			}}
@@ -134,18 +133,26 @@ const Notification = () => {
 					notification.onClicked;
 					handleClose();
 				}}
+				style={{
+					shadowColor: 'rgba(0, 0, 0)',
+					shadowOffset: { width: 0, height: 2 },
+					shadowOpacity: 0.4,
+					shadowRadius: 4,
+					elevation: 5,
+					backgroundColor: '#ffffff',
+					borderRadius: 10,
+				}}
 			>
 				<View
 					/* Background */
 					style={{
-						backgroundColor: '#ffffff',
-						borderRadius: 10,
 						display: 'flex',
 						flexDirection: 'row',
 						alignItems: 'center',
 						justifyContent: 'space-between',
 						padding: 20,
 						overflow: 'hidden',
+						borderRadius: 10,
 					}}
 					pointerEvents={'auto'}
 					onLayout={(e: LayoutChangeEvent) => {

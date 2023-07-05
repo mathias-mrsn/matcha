@@ -105,7 +105,6 @@ const SignInScreen = () => {
 				justifyContent: 'center',
 			}}
 		>
-			<Notification />
 			<GestureDetector gesture={handleSwipe}>
 				<View
 					/* Wrap the screen for web usage */
@@ -206,7 +205,6 @@ const SignInScreen = () => {
 										value={'Connect'}
 										style={{flex: 1,}}
 										onClicked={() => {dispatch(showNotification({
-											isShow: true,
 											type: 'success',
 											message: 'This feature is not available yet',
 										}))}}
@@ -216,7 +214,6 @@ const SignInScreen = () => {
 										type={'icon'}
 										icon={<AntDesign name="google" size={24} color="white" />}
 										onClicked={() => {dispatch(showNotification({
-											isShow: true,
 											type: 'error',
 											message: 'This is a test notification',
 										}))}}
