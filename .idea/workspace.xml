@@ -4,26 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="register page in progress. InputField now can check the input. Next step -&gt; connect buttons">
-      <change afterPath="$PROJECT_DIR$/requirements/client/components/CarouselHobbies/CarouselHobbies.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/constants/authentication.constant.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/constants/colors.contant.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/reducers/AuthenticationReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/services/authentication.service.ts" afterDir="false" />
+    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="de la merde today">
+      <change afterPath="$PROJECT_DIR$/requirements/client/components/CarouselItem/CarouselItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_1.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_2.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/types/authentication.type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/actions/notification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/actions/notification.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/app/(auth)/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/EditScreenInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/EditScreenInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/Themed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/Themed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/constants/Colors.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/layout/Notification.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/layout/Notification.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/CarouselHobbies/CarouselHobbies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/CarouselHobbies/CarouselHobbies.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/constants/authentication.constant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/constants/authentication.constant.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/constants/colors.contant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/constants/colors.contant.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,11 +62,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/requirements/client/screens" />
       <recent name="$PROJECT_DIR$/requirements/client/assets/fonts" />
       <recent name="$PROJECT_DIR$/requirements/client/screens/SignIn" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.web">
+  <component name="RunManager" selected="npm.ios">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -126,8 +117,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.web" />
         <item itemvalue="npm.ios" />
+        <item itemvalue="npm.web" />
         <item itemvalue="Docker.docker-compose.yml.client: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
@@ -169,7 +160,9 @@
       <workItem from="1688379158412" duration="7958000" />
       <workItem from="1688462735531" duration="16451000" />
       <workItem from="1688548913855" duration="20543000" />
-      <workItem from="1688589205532" duration="2089000" />
+      <workItem from="1688589205532" duration="2424000" />
+      <workItem from="1688636868549" duration="4571000" />
+      <workItem from="1688736826615" duration="9352000" />
     </task>
     <task id="LOCAL-00001" summary="few packages installed for client side">
       <created>1687267628023</created>
@@ -265,7 +258,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688488443719</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="de la merde today">
+      <option name="closed" value="true" />
+      <created>1688592791975</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1688592791975</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +299,8 @@
     <MESSAGE value="SignIn done, need to rework on useSwipe later" />
     <MESSAGE value="useSwipe done, and implemented inside signin.tsx" />
     <MESSAGE value="register page in progress. InputField now can check the input. Next step -&gt; connect buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="register page in progress. InputField now can check the input. Next step -&gt; connect buttons" />
+    <MESSAGE value="de la merde today" />
+    <option name="LAST_COMMIT_MESSAGE" value="de la merde today" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,5 +1,5 @@
 
-enum ColorsContant {
+export enum ColorsContant {
   BEIGE = '#D2D0BA',
   LIGHT_GREEN = '#B6BE9C',
   GREEN = '#7B9E87',

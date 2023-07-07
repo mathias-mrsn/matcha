@@ -1,60 +1,57 @@
-import {FlatList, View, Text, useWindowDimensions, Platform, SafeAreaView, TouchableOpacity} from "react-native";
+import {
+	FlatList,
+	View,
+	Text,
+	useWindowDimensions,
+	Platform,
+	SafeAreaView,
+	TouchableOpacity,
+	LogBox, VirtualizedList, YellowBox
+} from "react-native";
 import {colors} from "../../constants/colors.contant";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {AntDesign} from "@expo/vector-icons";
+import CarouselItem from "../CarouselItem/CarouselItem";
+import {HobbyType} from "../../types/authentication.type";
 
-type CarouselHobbiesProps = {
+type _CarouselHobbiesProps = {
 	width: number,
-	// items: string[],
+	items: HobbyType[],
+	onClick: (item: string) => boolean
 }
 
-const items = [
-	"Football",
-	"Baseball",
-	"Basketball",
-	"Volleyball",
-	"Swimming",
-	"Running",
-];
+const CarouselHobbies = (props: _CarouselHobbiesProps) => {
 
-const CarouselHobbies = (props: CarouselHobbiesProps) => {
+	const [isSelected, setIsSelected] = useState(true);
 
-	const [isSelected, setIsSelected] = useState(false);
+	useEffect(() => {
+		LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
+	}, [])
+	LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
 
 	return (
 		<SafeAreaView
 			style={{
 				width: props.width,
-				height: 350,
-				maxHeight: 350,
-				paddingHorizontal: 130,
+				height: 50,
+				maxHeight: 50,
 			}}
 		>
 			<FlatList
-				data={items}
-				pagingEnabled={true}
+				data={props.items}
+				showsHorizontalScrollIndicator={false}
+				horizontal={true}
 				renderItem={
 					({item, index}) => {
 						return (
-							<View
-								style={{
-									marginVertical: 10,
-									alignItems: 'center',
-									paddingHorizontal: 20,
-									paddingVertical: 20,
-									backgroundColor: colors[Math.floor(Math.random() * colors.length)],
-									justifyContent: 'center',
-									borderRadius: 10,
-								}}
-								pointerEvents={'none'}
-								key={index}
-							>
-								<Text>{item}</Text>
-							</View>
+							<CarouselItem
+								item={item}
+								onClick={props.onClick}
+								index={index}
+							/>
 						);
 				}}
-				style={{
-				}}
+				contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}
 			/>
 		</SafeAreaView>
 	);

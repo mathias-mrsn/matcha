@@ -17,89 +17,83 @@ import { useRouter } from "expo-router";
 import {verifyEmail, verifyPassword, verifyUsername} from "../../services/authentication.service";
 import {useDispatch} from "react-redux";
 import CarouselHobbies from "../../components/CarouselHobbies/CarouselHobbies";
+import {RegisterStateType} from "../../types/authentication.type";
+import _1 from "../../screens/register_subpages/_1";
+import _2 from "../../screens/register_subpages/_2";
 
-type _ReducerState = {
-	emailAddress: string,
-	username: string,
-	password: string,
-	confirmPassword: string,
-	hobbies: string[],
-	picture: string[],
-}
-
-const initialState : _ReducerState = {
+const initialState : RegisterStateType = {
 	emailAddress: '',
 	username: '',
 	password: '',
 	confirmPassword: '',
 	hobbies: [],
-	picture: ['', '', '', '', ''],
+	picture: [],
+	currentPage: 1,
+	width: 0,
+
+	_error: 0,
 }
 
-const reducer = (state: _ReducerState = initialState, action: any) : void => {
+const reducer = (state: RegisterStateType = initialState, action: any) : RegisterStateType => {
+
 	switch (action.type) {
-		case 'SET_EMAIL_ADDRESS': {
-			state.emailAddress = action.payload;
+		case 'SET_EMAIL_ADDRESS': return {...state, emailAddress: action.payload, _error: 0};
+		case 'SET_USERNAME': return {...state, username: action.payload, _error: 0};
+		case 'SET_PASSWORD': return {...state, password: action.payload, _error: 0};
+		case 'SET_CONFIRM_PASSWORD': return {...state, confirmPassword: action.payload, _error: 0};
+
+		case 'NEXT_PAGE': return {...state, currentPage: state.currentPage + 1, _error: 0}; // TODO: Add validation
+		case 'PREVIOUS_PAGE': return {...state, currentPage: state.currentPage - 1, _error: 0};
+
+		case 'ADD_HOBBY': {
+			console.log("length: " + state.hobbies.length);
+			if (state.hobbies.length >= 5) {
+				console.log("error")
+				return {...state, _error: 1};
+			}
+			console.log("no error")
+			const newHobbies = [...state.hobbies];
+			newHobbies.push(action.payload);
+			return {...state, hobbies: newHobbies, _error: 0};
 		}
+
+		case 'REMOVE_HOBBY': {
+			const newHobbies = [...state.hobbies];
+			newHobbies.splice(action.payload, 1);
+			return {...state, hobbies: newHobbies, _error: 0};
+		}
+
+		case 'SET_WIDTH': return {...state, width: action.payload, _error: 0};
+
+		default: throw new Error('Invalid action type');
 	}
 }
 
 const SignInScreen = () => {
 
-	const [emailAddress, setEmailAddress] = useState<string>('');
-	const [password, setPassword] = useState<string>('');
-	const [username, setUsername] = useState<string>('');
-	const [confirmPassword, setConfirmPassword] = useState<string>('');
-
-	const [width, setWidth] = useState<number>(0);
-
-	// const [state, localDispatch] = useReducer(reducer, initialState);
-
+	/**
+	 * Ignore the warning about nested virtualized lists
+	 * The warning is a false positive because the ScrollView is scrolling is disabled
+	 */
 	useEffect(() => {
 		LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
 	}, [])
 
-	const [pageIndex, setPageIndex] = useState<number>(1);
+	const [state, localDispatch] = useReducer(reducer, initialState);
 
 	const scrollRef = React.useRef<ScrollView>(null);
 
-	// const {width} = useWindowDimensions();
-
-	const router = useRouter();
-
 	const dispatch = useDispatch();
 
-	const handlePage = (ToIndex: number) => {
+	useEffect(() => {
 		if (scrollRef.current) {
-			// try {
-			// 	switch (pageIndex) {
-			// 		case 1: {
-			// 			verifyEmail(emailAddress);
-			// 			verifyUsername(username);
-			// 			verifyPassword(password, confirmPassword);
-			// 			break;
-			// 		}
-			// 	}
-			// } catch (e: any) {
-			// 	dispatch(showNotification({
-			// 		type: 'error',
-			// 		message: e.message,
-			// 	}));
-			// 	return;
-			// }
-
 			scrollRef.current.scrollTo({
-				x: width * (ToIndex - 1),
+				x: state.width * (state.currentPage - 1),
 				y: 0,
 				animated: true,
 			});
-			setPageIndex(ToIndex);
 		}
-	}
-
-	useEffect(() => {
-		console.log(width);
-	}, [width])
+	}, [state.currentPage])
 
 	return (
 		<View
@@ -120,7 +114,7 @@ const SignInScreen = () => {
 					backgroundColor: '#fff',
 				}}
 				onLayout={(event) => {
-					setWidth(event.nativeEvent.layout.width);
+					localDispatch({type: 'SET_WIDTH', payload: event.nativeEvent.layout.width});
 				}}
 			>
 				<View
@@ -133,7 +127,7 @@ const SignInScreen = () => {
 						maxWidth: SCREEN_MAX_WIDTH,
 					}}
 				>
-					<RegisterProgressIndicator index={pageIndex} maxIndex={4}/>
+					<RegisterProgressIndicator index={state.currentPage} maxIndex={4}/>
 				</View>
 				<ScrollView
 					/* Carousel of pages */
@@ -151,195 +145,20 @@ const SignInScreen = () => {
 
 					{/* -------------------------------------------------- */}
 
-					<View
+					<_1
 						/* First page container */
-						style={{
-							width: width,
-							maxWidth: SCREEN_MAX_WIDTH,
-							height: '100%',
-							alignItems: 'center',
-						}}
-					>
-						<View
-							/* Entire form */
-							style={{
-								width: width,
-								maxWidth: SCREEN_MAX_WIDTH,
-								height: '100%',
-								gap: 30,
-								alignItems: 'center',
-								paddingHorizontal: 38,
-							}}
-						>
-							<RegularText
-								/* Title */
-								text={'Register a new account'}
-								lineNumber={1}
-							/>
-							<AuthenticationInputField
-								/* Email input */
-								type={'emailAddress'}
-								placeholder={'Email'}
-								value={emailAddress}
-								onChange={(text: string) => {setEmailAddress(text)}}
-								enableCheck={true}
-							/>
-							<AuthenticationInputField
-								/* Username input */
-								type={'username'}
-								placeholder={'Username'}
-								value={username}
-								onChange={(text: string) => {setUsername(text)}}
-								enableCheck={true}
-							/>
-							<AuthenticationInputField
-								/* Password input */
-								type={'password'}
-								placeholder={'Password'}
-								value={password}
-								onChange={(text: string) => {setPassword(text)}}
-								enableCheck={true}
-							/>
-							<AuthenticationInputField
-								/* Confirm password input */
-								type={'password'}
-								placeholder={'Confirm Password'}
-								value={confirmPassword}
-								onChange={(text: string) => {setConfirmPassword(text)}}
-								enableCheck={true}
-							/>
-							<View
-								/* Buttons container */
-								style={{
-									display: 'flex',
-									gap: 14,
-									width: '100%',
-								}}
-							>
-								<View
-									/* Upper buttons */
-									style={{
-										display: 'flex',
-										flexDirection: 'row',
-										gap: 14,
-									}}
-								>
-									<AuthenticationButton
-										/* Previous button */
-										type={'icon'}
-										icon={<AntDesign name="left" size={24} color="white" />}
-										onClicked={() => {router.push('/signin')}}
-									/>
-									<AuthenticationButton
-										/* Next button */
-										type={'string'}
-										value={'Next'}
-										style={{flex: 1,}}
-										onClicked={() => {handlePage(2)}}
-									/>
-								</View>
-								<View
-									/* Lower buttons */
-									style={{
-										display: 'flex',
-										flexDirection: 'row',
-										gap: 14,
-									}}
-								>
-									<AuthenticationButton
-										/* Google button */
-										type={'icon'}
-										icon={<AntDesign name="google" size={24} color="white" />}
-										style={{flex: 1,}}
-										onClicked={() => {console.log('Google')}}
-									/>
-									<AuthenticationButton
-										/* Facebook button */
-										type={'icon'}
-										icon={<Entypo name="facebook" size={24} color="white" />}
-										style={{flex: 1,}}
-										onClicked={() => {}}
-									/>
-								</View>
-							</View>
-							<View
-								/* Sign In link */
-								style={{
-									display: 'flex',
-									flexDirection: 'row',
-								}}
-							>
-								<Text>You already have an account ? </Text>
-								<Link
-									href={'/signin'}
-									style={{color: '#000000', fontWeight: 'bold'}}
-								>Sign in</Link>
-							</View>
-						</View>
-					</View>
+						state={state}
+						localDispatch={localDispatch}
+					/>
 
 					{/* -------------------------------------------------- */}
 
-					<View
-						/* Second page container */
-						style={{
-							width: width,
-							maxWidth: SCREEN_MAX_WIDTH,
-							height: '100%',
-							alignItems: 'center',
-							overflow: 'hidden',
-						}}
-					>
-						<View
-							style={{
-								width: width,
-								maxWidth: SCREEN_MAX_WIDTH,
-								height: '100%',
-								gap: 30,
-								alignItems: 'center',
-								paddingHorizontal: 38,
-							}}
-						>
-							<RegularText text={'Tell us more about what you like'} lineNumber={1}/>
-							<View
-								style={{gap: 15,}}
-							>
-								<CarouselHobbies width={width}/>
-							</View>
-							<View
-								/* Buttons container */
-								style={{
-									flexDirection: 'row',
-									gap: 14,
-									width: '100%',
-								}}
-							>
-								<AuthenticationButton
-									type={"icon"}
-									icon={<AntDesign name="left" size={24} color="white" />}
-									onClicked={() => {handlePage(1)}}
-								/>
-								<AuthenticationButton
-									type={"string"}
-									value={"Next"}
-									style={{flex: 1,}}
-									onClicked={() => {handlePage(3)}}
-								/>
-							</View>
-						</View>
-					</View>
+					<_2
+						state={state}
+						localDispatch={localDispatch}
+					/>
 
-					<View
-						/* First page container */
-						style={{
-							width: width,
-							maxWidth: SCREEN_MAX_WIDTH,
-							height: '100%',
-							alignItems: 'center',
-						}}
-					>
-						<Text>salut</Text>
-					</View>
+
 
 				</ScrollView>
 			</SafeAreaView>
