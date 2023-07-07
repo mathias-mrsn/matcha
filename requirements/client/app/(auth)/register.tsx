@@ -30,40 +30,36 @@ const initialState : RegisterStateType = {
 	picture: [],
 	currentPage: 1,
 	width: 0,
-
-	_error: 0,
 }
 
 const reducer = (state: RegisterStateType = initialState, action: any) : RegisterStateType => {
 
 	switch (action.type) {
-		case 'SET_EMAIL_ADDRESS': return {...state, emailAddress: action.payload, _error: 0};
-		case 'SET_USERNAME': return {...state, username: action.payload, _error: 0};
-		case 'SET_PASSWORD': return {...state, password: action.payload, _error: 0};
-		case 'SET_CONFIRM_PASSWORD': return {...state, confirmPassword: action.payload, _error: 0};
+		case 'SET_EMAIL_ADDRESS': return {...state, emailAddress: action.payload};
+		case 'SET_USERNAME': return {...state, username: action.payload};
+		case 'SET_PASSWORD': return {...state, password: action.payload};
+		case 'SET_CONFIRM_PASSWORD': return {...state, confirmPassword: action.payload};
 
-		case 'NEXT_PAGE': return {...state, currentPage: state.currentPage + 1, _error: 0}; // TODO: Add validation
-		case 'PREVIOUS_PAGE': return {...state, currentPage: state.currentPage - 1, _error: 0};
+		case 'NEXT_PAGE': return {...state, currentPage: state.currentPage + 1}; // TODO: Add validation
+		case 'PREVIOUS_PAGE': return {...state, currentPage: state.currentPage - 1};
 
 		case 'ADD_HOBBY': {
-			console.log("length: " + state.hobbies.length);
-			if (state.hobbies.length >= 5) {
-				console.log("error")
-				return {...state, _error: 1};
-			}
-			console.log("no error")
 			const newHobbies = [...state.hobbies];
 			newHobbies.push(action.payload);
-			return {...state, hobbies: newHobbies, _error: 0};
+			return {...state, hobbies: newHobbies};
 		}
 
 		case 'REMOVE_HOBBY': {
 			const newHobbies = [...state.hobbies];
-			newHobbies.splice(action.payload, 1);
-			return {...state, hobbies: newHobbies, _error: 0};
+			newHobbies.forEach((hobby, index) => {
+				if (hobby === action.payload) {
+					newHobbies.splice(index, 1);
+				}
+			});
+			return {...state, hobbies: newHobbies};
 		}
 
-		case 'SET_WIDTH': return {...state, width: action.payload, _error: 0};
+		case 'SET_WIDTH': return {...state, width: action.payload};
 
 		default: throw new Error('Invalid action type');
 	}

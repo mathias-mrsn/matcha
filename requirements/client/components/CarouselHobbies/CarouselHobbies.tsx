@@ -22,8 +22,6 @@ type _CarouselHobbiesProps = {
 
 const CarouselHobbies = (props: _CarouselHobbiesProps) => {
 
-	const [isSelected, setIsSelected] = useState(true);
-
 	useEffect(() => {
 		LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
 	}, [])

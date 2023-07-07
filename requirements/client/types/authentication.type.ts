@@ -19,8 +19,6 @@ export type RegisterStateType = {
 	picture: string[],
 	currentPage: number,
 	width: number,
-
-	_error: number,
 }
 
 /**

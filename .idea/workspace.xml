@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="de la merde today">
-      <change afterPath="$PROJECT_DIR$/requirements/client/components/CarouselItem/CarouselItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_2.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/types/authentication.type.ts" afterDir="false" />
+    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="carousel works well just need to fix the ADD_HOBBY and REMOVE_HOBBY functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/app/(auth)/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/register.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/components/CarouselHobbies/CarouselHobbies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/CarouselHobbies/CarouselHobbies.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/constants/authentication.constant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/constants/authentication.constant.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/constants/colors.contant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/constants/colors.contant.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/CarouselItem/CarouselItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/CarouselItem/CarouselItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_2.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_2.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/types/authentication.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/types/authentication.type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +159,7 @@
       <workItem from="1688548913855" duration="20543000" />
       <workItem from="1688589205532" duration="2424000" />
       <workItem from="1688636868549" duration="4571000" />
-      <workItem from="1688736826615" duration="9352000" />
+      <workItem from="1688736826615" duration="11179000" />
     </task>
     <task id="LOCAL-00001" summary="few packages installed for client side">
       <created>1687267628023</created>
@@ -266,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688592791975</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="carousel works well just need to fix the ADD_HOBBY and REMOVE_HOBBY functions">
+      <option name="closed" value="true" />
+      <created>1688748473622</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1688748473622</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +305,8 @@
     <MESSAGE value="useSwipe done, and implemented inside signin.tsx" />
     <MESSAGE value="register page in progress. InputField now can check the input. Next step -&gt; connect buttons" />
     <MESSAGE value="de la merde today" />
-    <option name="LAST_COMMIT_MESSAGE" value="de la merde today" />
+    <MESSAGE value="carousel works well just need to fix the ADD_HOBBY and REMOVE_HOBBY functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="carousel works well just need to fix the ADD_HOBBY and REMOVE_HOBBY functions" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

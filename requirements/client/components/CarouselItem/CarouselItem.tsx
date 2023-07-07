@@ -37,13 +37,12 @@ const CarouselItem = (props: _CarouselItemProps) => {
                     style={{
                         position: 'absolute',
                         backgroundColor: 'rgba(9,230,39,0.8)',
+                        minWidth: 30,
                         padding: 2,
                         borderRadius: 9999,
                     }}
                 >
-                    <AntDesign name="checkcircleo" size={24} color="#333" style={{
-
-                    }}/>
+                    <AntDesign name="checkcircleo" size={24} color="#333"/>
                 </View>
             }
         </TouchableOpacity>

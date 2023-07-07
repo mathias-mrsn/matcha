@@ -17,14 +17,14 @@ const _2 = ({state, localDispatch} : RegisterSubPagesProps ) => {
 		if (state.hobbies.includes(hobby)) {
 			localDispatch({type: 'REMOVE_HOBBY', payload: hobby});
 		} else {
-			localDispatch({type: 'ADD_HOBBY', payload: hobby});
-			console.log("here", state._error);
-			if (state._error) {
+			if (state.hobbies.length >= 5) {
 				dispatch(showNotification({
 					type: 'error',
 					message: 'You can only select up to 5 hobbies',
 				}))
 				return false;
+			} else {
+				localDispatch({type: 'ADD_HOBBY', payload: hobby});
 			}
 		}
 		return true;
