@@ -1,20 +1,36 @@
-import {RegisterSubPagesProps} from "../../types/authentication.type";
-import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
-import {LogBox, View} from "react-native";
-import RegularText from "../../components/RegularText/RegularText";
-import CarouselHobbies from "../../components/CarouselHobbies/CarouselHobbies";
-import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
-import {AntDesign} from "@expo/vector-icons";
-import React, {useEffect} from "react";
+/* Libraries */
+import {View} from "react-native";
+import React from "react";
 import {useDispatch} from "react-redux";
-import {hideNotification, showNotification} from "../../actions/notification";
+
+/* Components */
+import RegularText from "../../components/RegularText/RegularText";
+import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
+import CarouselHobbies from "../../components/CarouselHobbies/CarouselHobbies";
+
+/* Icons */
+import {AntDesign} from "@expo/vector-icons";
+
+/* Types */
+import {RegisterSubPagesProps} from "../../types/authentication.type";
+
+/* Constants */
+import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
 import {HOBBIES} from "../../constants/authentication.constant";
+
+/* Actions */
+import {hideNotification, showNotification} from "../../actions/notification";
+
 
 const _2 = ({state, localDispatch} : RegisterSubPagesProps ) => {
 
+	/* States */
 	const [hobbies, setHobbies] = React.useState<string[]>([]);
 
+	/* Redux */
 	const dispatch = useDispatch();
+
+	/* Functions */
 	const handleHobbiesChange = (hobby: string) : boolean => {
 		if (hobbies.includes(hobby)) {
 			setHobbies(hobbies.filter((h) => h !== hobby));

@@ -1,14 +1,16 @@
+/* Libraries */
 import {
     TextInput,
     View,
-    Text,
-    NativeSyntheticEvent,
-    TextInputFocusEventData,
-    Animated, Keyboard,
+    Animated,
+    Keyboard,
 } from "react-native";
 import React, {useEffect} from "react";
 
+/* Icons */
 import Ionicons from '@expo/vector-icons/Ionicons';
+
+/* Services */
 import {verifyEmail, verifyPassword, verifyUsername} from "../../services/authentication.service";
 
 type AuthenticationInputFieldProps = {
@@ -27,7 +29,7 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
     const [isPasswordVisible, setIsPasswordVisible] = React.useState<boolean>(false);
     const [borderColor, setBorderColor] = React.useState<string>('#8E8E8E');
 
-    const handleOnFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    const handleOnFocus = () => {
         Animated.timing(refPlaceFolder.current.y, {
             toValue: 6,
             duration: 200,

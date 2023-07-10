@@ -1,23 +1,21 @@
+/* Libraries */
 import {
 	View,
-	Text,
 	ScrollView,
-	useWindowDimensions, SafeAreaView, LogBox,
+	SafeAreaView
 } from "react-native";
-import RegularText from "../../components/RegularText/RegularText";
-import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
-import AuthenticationInputField from "../../components/AuthenticationInputField/AuthenticationInputField";
-import React, {useEffect, useReducer, useState} from "react";
-import {showNotification} from "../../actions/notification";
-import {AntDesign, Entypo} from "@expo/vector-icons";
-import {Link} from "expo-router";
+import React, {useEffect, useReducer} from "react";
+
+/* Components */
 import RegisterProgressIndicator from "../../components/RegisterProgressIndicator/RegisterProgressIndicator";
+
+/* Constants */
 import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
-import { useRouter } from "expo-router";
-import {verifyEmail, verifyPassword, verifyUsername} from "../../services/authentication.service";
-import {useDispatch} from "react-redux";
-import CarouselHobbies from "../../components/CarouselHobbies/CarouselHobbies";
+
+/* Types */
 import {RegisterStateType} from "../../types/authentication.type";
+
+/* Sub pages */
 import _1 from "../../screens/register_subpages/_1";
 import _2 from "../../screens/register_subpages/_2";
 import _3 from "../../screens/register_subpages/_3";
@@ -74,12 +72,13 @@ const reducer = (state: RegisterStateType = initialState, action: any) : Registe
 
 const SignInScreen = () => {
 
+	/* Reducer */
 	const [state, localDispatch] = useReducer(reducer, initialState);
 
+	/* Refs */
 	const scrollRef = React.useRef<ScrollView>(null);
 
-	const dispatch = useDispatch();
-
+	/* Hooks */
 	useEffect(() => {
 		if (scrollRef.current) {
 			scrollRef.current.scrollTo({
@@ -137,7 +136,6 @@ const SignInScreen = () => {
 						flex: 0.7,
 					}}
 				>
-
 					{/* -------------------------------------------------- */}
 
 					<_1
@@ -169,9 +167,6 @@ const SignInScreen = () => {
 						state={state}
 						localDispatch={localDispatch}
 					/>
-
-
-
 				</ScrollView>
 			</SafeAreaView>
 		</View>

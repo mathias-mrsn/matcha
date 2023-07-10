@@ -1,22 +1,34 @@
-import {RegisterSubPagesProps} from "../../types/authentication.type";
-import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
-import {View, Text} from "react-native";
-import RegularText from "../../components/RegularText/RegularText";
-import CarouselHobbies from "../../components/CarouselHobbies/CarouselHobbies";
-import {HOBBIES} from "../../constants/authentication.constant";
-import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
-import {AntDesign} from "@expo/vector-icons";
-import React, {useState} from "react";
-import ChooseImage from "../../components/ChooseImage/ChooseImage";
-import {hideNotification, showNotification} from "../../actions/notification";
+/* Libraries */
 import {useDispatch} from "react-redux";
+import React, {useState} from "react";
+import {View} from "react-native";
+
+/* Components */
+import RegularText from "../../components/RegularText/RegularText";
+import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
+import ChooseImage from "../../components/ChooseImage/ChooseImage";
+
+/* Types */
+import {RegisterSubPagesProps} from "../../types/authentication.type";
+
+/* Constants */
+import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
+
+/* Icons */
+import {AntDesign} from "@expo/vector-icons";
+
+/* Actions */
+import {hideNotification, showNotification} from "../../actions/notification";
 
 const _3 = ({state, localDispatch} : RegisterSubPagesProps) => {
 
+	/* States */
 	const [images, setImages] = useState<string[]>([]);
 
+	/* Redux */
 	const dispatch = useDispatch();
 
+	/* Functions */
 	const handleImageAdded = (uri: string) => {
 		if (images.length >= 6) {return;}
 		setImages([...images, uri]);

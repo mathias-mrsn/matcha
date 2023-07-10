@@ -1,33 +1,51 @@
-import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
+/* Libraries */
 import {Text, View} from "react-native";
+import React, {useState} from "react";
+import {Link, useRouter} from "expo-router";
+
+/* Constants */
+import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
+
+/* Components */
 import RegularText from "../../components/RegularText/RegularText";
 import AuthenticationInputField from "../../components/AuthenticationInputField/AuthenticationInputField";
 import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
+
+/* Icons */
 import {AntDesign, Entypo} from "@expo/vector-icons";
-import {Link, useRouter} from "expo-router";
-import React, {useEffect, useRef, useState} from "react";
+
+/* Types */
 import {RegisterSubPagesProps} from "../../types/authentication.type";
+
+/* Services */
 import {verifyEmail, verifyPassword, verifyUsername} from "../../services/authentication.service";
+
+/* Redux */
 import {useDispatch} from "react-redux";
+
+/* Actions */
 import {hideNotification, showNotification} from "../../actions/notification";
 
 const _1 = ({state, localDispatch}: RegisterSubPagesProps) => {
 
+	/* States */
 	const [emailAddress, setEmailAddress] = useState<string>('');
 	const [username, setUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [confirmPassword, setConfirmPassword] = useState<string>('');
 
+	/* Expo router */
 	const router = useRouter();
 
+	/* Redux */
 	const dispatch = useDispatch();
 
+	/* Functions */
 	const handleNextPage = () => {
 		try {
-			// TODO : REMOVE THE COMMENTS BELOW
-			// verifyEmail(emailAddress);
-			// verifyUsername(username);
-			// verifyPassword(password, confirmPassword);
+			verifyEmail(emailAddress);
+			verifyUsername(username);
+			verifyPassword(password, confirmPassword);
 			localDispatch({type: 'VALID_REGISTER_FORM', payload: {
 				emailAddress,
 				username,

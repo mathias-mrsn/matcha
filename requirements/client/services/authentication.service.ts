@@ -29,3 +29,10 @@ export const verifyUsername = (username: string): void => {
 		throw new Error("This username is invalid");
 }
 
+/**
+ * TODO :
+ * SignIn
+ * Register
+ * Google
+ * Facebook
+ */

@@ -1,13 +1,20 @@
-import {RegisterSubPagesProps} from "../../types/authentication.type";
-import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
-import {View, Text} from "react-native";
-import RegularText from "../../components/RegularText/RegularText";
-import ChooseImage from "../../components/ChooseImage/ChooseImage";
-import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
-import {AntDesign} from "@expo/vector-icons";
+/* Libraries */
+import {View} from "react-native";
 import React from "react";
+
+/* Components */
+import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
 import HeaderText from "../../components/HeaderText/HeaderText";
 import SmallText from "../../components/SmallText/SmallText";
+
+/* Types */
+import {RegisterSubPagesProps} from "../../types/authentication.type";
+
+/* Constants */
+import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
+
+/* Icons */
+import {AntDesign} from "@expo/vector-icons";
 
 const _4 = ({state, localDispatch}: RegisterSubPagesProps) => {
 	return (
@@ -32,11 +39,6 @@ const _4 = ({state, localDispatch}: RegisterSubPagesProps) => {
 				}}
 			>
 				<HeaderText primary={'Only one step before finding your '} primaryColor={'#000'} secondary={'love'} secondaryColor={'#D38787'}/>
-				{/*<View*/}
-				{/*	style={{*/}
-				{/*		height: 150,*/}
-				{/*	}}*/}
-				{/*/>*/}
 				<View
 					style={{
 						width: '100%',

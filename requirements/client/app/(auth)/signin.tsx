@@ -29,7 +29,6 @@ import useSwipe from "../../hooks/useSwipe";
 import {showNotification} from "../../actions/notification";
 
 /* Layout */
-import Notification from "../../layout/Notification";
 import HeaderText from "../../components/HeaderText/HeaderText";
 import RegularText from "../../components/RegularText/RegularText";
 
@@ -297,4 +296,4 @@ const SignInScreen = () => {
 	)
 }
 
-export default SignInScreen
+export default SignInScreen;

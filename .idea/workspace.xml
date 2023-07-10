@@ -4,24 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="hobbies carousel works">
-      <change afterPath="$PROJECT_DIR$/requirements/client/components/ChooseImage/ChooseImage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/components/SmallText/SmallText.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_3.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_4.tsx" afterDir="false" />
+    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="front for auth is almost done, TODO -&gt; clean every files (sorting import, add comments, etc.) and create TFA module to use later">
+      <change afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/tfa.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/lib/api/authentication.api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/app/(auth)/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/register.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/app/[...missing].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/[...missing].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/app/modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/modal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton/AuthenticationButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton/AuthenticationButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/CarouselHobbies/CarouselHobbies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/CarouselHobbies/CarouselHobbies.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/CarouselItem/CarouselItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/CarouselItem/CarouselItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/HeaderText/HeaderText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/HeaderText/HeaderText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/components/RegularText/RegularText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/RegularText/RegularText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/EditScreenInfo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/StyledText.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/Themed.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/constants/authentication.constant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/constants/authentication.constant.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/constants/colors.contant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/constants/colors.contant.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_1.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_2.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_2.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_3.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_3.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_4.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_4.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/services/authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/services/authentication.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +43,10 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+    <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="2RTGd2YaZLUsYIiJqEWtzFcdK6K" />
   <component name="ProjectLevelVcsManager">
@@ -64,7 +72,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Colors",
     "ts.external.directory.path": "/Users/mathias.mrsn/42/matcha/requirements/client/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -176,7 +184,7 @@
       <workItem from="1688636868549" duration="4571000" />
       <workItem from="1688736826615" duration="12201000" />
       <workItem from="1688808890012" duration="5825000" />
-      <workItem from="1688986927294" duration="7059000" />
+      <workItem from="1688986927294" duration="11877000" />
     </task>
     <task id="LOCAL-00001" summary="few packages installed for client side">
       <created>1687267628023</created>
@@ -296,7 +304,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688764858341</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="front for auth is almost done, TODO -&gt; clean every files (sorting import, add comments, etc.) and create TFA module to use later">
+      <option name="closed" value="true" />
+      <created>1688998384307</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1688998384307</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,7 +348,8 @@
     <MESSAGE value="de la merde today" />
     <MESSAGE value="carousel works well just need to fix the ADD_HOBBY and REMOVE_HOBBY functions" />
     <MESSAGE value="hobbies carousel works" />
-    <option name="LAST_COMMIT_MESSAGE" value="hobbies carousel works" />
+    <MESSAGE value="front for auth is almost done, TODO -&gt; clean every files (sorting import, add comments, etc.) and create TFA module to use later" />
+    <option name="LAST_COMMIT_MESSAGE" value="front for auth is almost done, TODO -&gt; clean every files (sorting import, add comments, etc.) and create TFA module to use later" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

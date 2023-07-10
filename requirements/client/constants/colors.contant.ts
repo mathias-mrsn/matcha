@@ -13,3 +13,8 @@ export const colors : string[] = [
     ColorsContant.BLUE,
     ColorsContant.RED,
 ]
+
+export const Colors = {
+    light: {},
+    dark: {},
+}

@@ -66,6 +66,7 @@ function RootLayoutNav() {
         <Provider store={store}>
           <Notification />
           <Stack>
+            <Stack.Screen name="(auth)/tfa" options={{ headerShown: false }} />
             <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
             <Stack.Screen name="(auth)/register" options={{ headerShown: false }} />
             {/*<Stack.Screen name="modal" options={{ presentation: 'modal' }} />*/}
