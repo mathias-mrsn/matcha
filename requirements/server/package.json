@@ -2,7 +2,7 @@
   "name": "matcha_server",
   "version": "1.0.0",
   "description": "back-end functions for matcha",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "mamaurai ldermign",
   "license": "MIT",
   "dependencies": {
@@ -18,6 +18,6 @@
     "typescript": "^5.1.3"
   },
   "scripts": {
-	"start": "node index.js"
+	"start": "node src/index.js"
   }
 }
