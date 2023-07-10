@@ -5,16 +5,43 @@ import AuthenticationInputField from "../../components/AuthenticationInputField/
 import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
 import {AntDesign, Entypo} from "@expo/vector-icons";
 import {Link, useRouter} from "expo-router";
-import React, {useEffect} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {RegisterSubPagesProps} from "../../types/authentication.type";
+import {verifyEmail, verifyPassword, verifyUsername} from "../../services/authentication.service";
+import {useDispatch} from "react-redux";
+import {hideNotification, showNotification} from "../../actions/notification";
 
 const _1 = ({state, localDispatch}: RegisterSubPagesProps) => {
 
+	const [emailAddress, setEmailAddress] = useState<string>('');
+	const [username, setUsername] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const [confirmPassword, setConfirmPassword] = useState<string>('');
+
 	const router = useRouter();
 
-	useEffect(() => {
-		console.log(state.width)
-	}, [state.width])
+	const dispatch = useDispatch();
+
+	const handleNextPage = () => {
+		try {
+			// TODO : REMOVE THE COMMENTS BELOW
+			// verifyEmail(emailAddress);
+			// verifyUsername(username);
+			// verifyPassword(password, confirmPassword);
+			localDispatch({type: 'VALID_REGISTER_FORM', payload: {
+				emailAddress,
+				username,
+				password,
+				confirmPassword
+			}});
+			dispatch(hideNotification())
+		} catch (e: any) {
+			dispatch(showNotification({
+				type: 'error',
+				message: e.message,
+			}));
+		}
+	}
 
 	return (
 		<View
@@ -46,32 +73,32 @@ const _1 = ({state, localDispatch}: RegisterSubPagesProps) => {
 					/* Email input */
 					type={'emailAddress'}
 					placeholder={'Email'}
-					value={state.emailAddress}
-					onChange={(text: string) => {localDispatch({type: 'SET_EMAIL_ADDRESS', payload: text})}}
+					value={emailAddress}
+					onChange={(text: string) => {setEmailAddress(text)}}
 					enableCheck={true}
 				/>
 				<AuthenticationInputField
 					/* Username input */
 					type={'username'}
 					placeholder={'Username'}
-					value={state.username}
-					onChange={(text: string) => {localDispatch({type: 'SET_USERNAME', payload: text})}}
+					value={username}
+					onChange={(text: string) => {setUsername(text)}}
 					enableCheck={true}
 				/>
 				<AuthenticationInputField
 					/* Password input */
 					type={'password'}
 					placeholder={'Password'}
-					value={state.password}
-					onChange={(text: string) => {localDispatch({type: 'SET_PASSWORD', payload: text})}}
+					value={password}
+					onChange={(text: string) => {setPassword(text)}}
 					enableCheck={true}
 				/>
 				<AuthenticationInputField
 					/* Confirm password input */
 					type={'password'}
 					placeholder={'Confirm Password'}
-					value={state.confirmPassword}
-					onChange={(text: string) => {localDispatch({type: 'SET_CONFIRM_PASSWORD', payload: text})}}
+					value={confirmPassword}
+					onChange={(text: string) => {setConfirmPassword(text)}}
 					enableCheck={true}
 				/>
 				<View
@@ -101,7 +128,7 @@ const _1 = ({state, localDispatch}: RegisterSubPagesProps) => {
 							type={'string'}
 							value={'Next'}
 							style={{flex: 1,}}
-							onClicked={() => {localDispatch({type: 'NEXT_PAGE'})}}
+							onClicked={handleNextPage}
 						/>
 					</View>
 					<View

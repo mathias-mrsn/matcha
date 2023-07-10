@@ -1,36 +1,50 @@
 import {RegisterSubPagesProps} from "../../types/authentication.type";
 import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
-import {View} from "react-native";
+import {LogBox, View} from "react-native";
 import RegularText from "../../components/RegularText/RegularText";
 import CarouselHobbies from "../../components/CarouselHobbies/CarouselHobbies";
 import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton";
 import {AntDesign} from "@expo/vector-icons";
 import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {showNotification} from "../../actions/notification";
+import {hideNotification, showNotification} from "../../actions/notification";
 import {HOBBIES} from "../../constants/authentication.constant";
 
 const _2 = ({state, localDispatch} : RegisterSubPagesProps ) => {
 
+	const [hobbies, setHobbies] = React.useState<string[]>([]);
+
 	const dispatch = useDispatch();
 	const handleHobbiesChange = (hobby: string) : boolean => {
-		if (state.hobbies.includes(hobby)) {
-			localDispatch({type: 'REMOVE_HOBBY', payload: hobby});
+		if (hobbies.includes(hobby)) {
+			setHobbies(hobbies.filter((h) => h !== hobby));
 		} else {
-			if (state.hobbies.length >= 5) {
+			if (hobbies.length >= 5) {
 				dispatch(showNotification({
 					type: 'error',
 					message: 'You can only select up to 5 hobbies',
 				}))
 				return false;
 			} else {
-				localDispatch({type: 'ADD_HOBBY', payload: hobby});
+				const newHobbies = [...hobbies];
+				newHobbies.push(hobby);
+				setHobbies(newHobbies);
 			}
 		}
 		return true;
 	}
 
-	useEffect(() => {console.log(state.hobbies)}, [state.hobbies]);
+	const handleNextPage = () => {
+		if (hobbies.length === 0) {
+			dispatch(showNotification({
+				type: 'error',
+				message: 'Please select at least one hobby',
+			}))
+		} else {
+			localDispatch({type: 'VALID_HOBBIES', payload: hobbies});
+			dispatch(hideNotification())
+		}
+	}
 
 	return (
 		<View
@@ -80,7 +94,7 @@ const _2 = ({state, localDispatch} : RegisterSubPagesProps ) => {
 						type={"string"}
 						value={"Next"}
 						style={{flex: 1,}}
-						onClicked={() => localDispatch({type: 'NEXT_PAGE'})}
+						onClicked={handleNextPage}
 					/>
 				</View>
 			</View>

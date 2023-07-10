@@ -1,24 +1,23 @@
 import { Text } from 'react-native';
 import React from "react";
 
-type RegularTextProps = {
+type SmallTextProps = {
 	text: string,
 	lineNumber: number,
 };
 
-const RegularText = (props: RegularTextProps) => {
+const SmallText = (props: SmallTextProps) => {
 
 	return (
 		<Text
 			/* Form title */
 			style={{
-				fontSize: 18,
-				fontFamily: 'Poppins_Medium',
-				textAlign: 'center',
+				fontSize: 14,
+				fontFamily: 'Poppins_LightItalic',
 			}}
 			numberOfLines={props.lineNumber}
 		>{props.text}</Text>
 	);
 }
 
-export default RegularText;
+export default SmallText;

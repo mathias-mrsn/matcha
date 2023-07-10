@@ -4,7 +4,7 @@ import {
     Text,
     NativeSyntheticEvent,
     TextInputFocusEventData,
-    Animated,
+    Animated, Keyboard,
 } from "react-native";
 import React, {useEffect} from "react";
 
@@ -106,6 +106,8 @@ const AuthenticationInputField = (props: AuthenticationInputFieldProps) => {
                 onFocus={handleOnFocus}
                 onBlur={handleOffFocus}
                 maxLength={50}
+                blurOnSubmit={false}
+                onSubmitEditing={()=> Keyboard.dismiss()}
             />
             <View
                 pointerEvents={'none'}

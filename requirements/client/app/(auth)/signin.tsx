@@ -125,12 +125,20 @@ const SignInScreen = () => {
 							width: '100%',
 						}}
 					>
-						<HeaderText
-							primary={headerText[0]}
-							primaryColor={'#000000'}
-							secondary={headerText[1]}
-							secondaryColor={'#ffffff'}
-						/>
+						<View
+							style={{
+								position: 'absolute',
+								bottom: 0,
+								margin: 40,
+							}}
+						>
+							<HeaderText
+								primary={`${headerText[0]}\n`}
+								primaryColor={'#000000'}
+								secondary={headerText[1]}
+								secondaryColor={'#ffffff'}
+							/>
+						</View>
 					</View>
 					<Animated.View
 						/* Footer container */
@@ -205,8 +213,8 @@ const SignInScreen = () => {
 										value={'Connect'}
 										style={{flex: 1,}}
 										onClicked={() => {dispatch(showNotification({
-											type: 'success',
-											message: 'This feature is not available yet',
+											type: 'error',
+											message: 'The server is not available yet',
 										}))}}
 									/>
 									<AuthenticationButton
@@ -214,14 +222,18 @@ const SignInScreen = () => {
 										type={'icon'}
 										icon={<AntDesign name="google" size={24} color="white" />}
 										onClicked={() => {dispatch(showNotification({
-											type: 'error',
-											message: 'This is a test notification',
+											type: 'warning',
+											message: 'This feature is not available yet',
 										}))}}
 									/>
 									<AuthenticationButton
 										/* Connect with facebook button */
 										type={'icon'}
 										icon={<Entypo name="facebook" size={24} color="white" />}
+										onClicked={() => {dispatch(showNotification({
+											type: 'warning',
+											message: 'This feature is not available yet',
+										}))}}
 									/>
 								  </View>
 								  <View

@@ -20,16 +20,13 @@ const HeaderText = (props: HeaderTextProps) => {
 				fontSize: 32,
 				fontFamily: 'Poppins_SemiBold',
 				letterSpacing: 1.28,
-				position: 'absolute',
-				bottom: 0,
-				margin: 40,
 				display: 'flex',
 				flexDirection: 'column',
 			}}
 		>
 			<Text
 				style={{color: props.primaryColor}}
-			>{props.primary}{"\n"}</Text>
+			>{props.primary}</Text>
 			{ props.secondary &&
 				<Text
 					style={{color: props.secondaryColor ?? '#ffffff'}}

@@ -28,6 +28,7 @@ const CarouselItem = (props: _CarouselItemProps) => {
                 backgroundColor: props.item.color,
                 justifyContent: 'center',
                 borderRadius: 10,
+                minWidth: 70,
             }}
             onPress={handleClick}
         >
@@ -37,7 +38,6 @@ const CarouselItem = (props: _CarouselItemProps) => {
                     style={{
                         position: 'absolute',
                         backgroundColor: 'rgba(9,230,39,0.8)',
-                        minWidth: 30,
                         padding: 2,
                         borderRadius: 9999,
                     }}

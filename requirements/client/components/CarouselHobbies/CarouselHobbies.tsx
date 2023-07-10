@@ -6,7 +6,7 @@ import {
 	Platform,
 	SafeAreaView,
 	TouchableOpacity,
-	LogBox, VirtualizedList, YellowBox
+	LogBox, VirtualizedList, YellowBox, ScrollView
 } from "react-native";
 import {colors} from "../../constants/colors.contant";
 import {useEffect, useState} from "react";
@@ -22,11 +22,6 @@ type _CarouselHobbiesProps = {
 
 const CarouselHobbies = (props: _CarouselHobbiesProps) => {
 
-	useEffect(() => {
-		LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
-	}, [])
-	LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
-
 	return (
 		<SafeAreaView
 			style={{
@@ -35,22 +30,24 @@ const CarouselHobbies = (props: _CarouselHobbiesProps) => {
 				maxHeight: 50,
 			}}
 		>
-			<FlatList
-				data={props.items}
+			<ScrollView
+				// data={props.items}
 				showsHorizontalScrollIndicator={false}
 				horizontal={true}
-				renderItem={
-					({item, index}) => {
-						return (
-							<CarouselItem
-								item={item}
-								onClick={props.onClick}
-								index={index}
-							/>
-						);
-				}}
 				contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}
-			/>
+			>
+				{ props.items.map((item, index) => {
+					return (
+						<CarouselItem
+							item={item}
+							onClick={props.onClick}
+							index={index}
+							key={index}
+						/>
+					);
+				})}
+
+			</ScrollView>
 		</SafeAreaView>
 	);
 }

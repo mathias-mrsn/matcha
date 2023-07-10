@@ -20,6 +20,8 @@ import CarouselHobbies from "../../components/CarouselHobbies/CarouselHobbies";
 import {RegisterStateType} from "../../types/authentication.type";
 import _1 from "../../screens/register_subpages/_1";
 import _2 from "../../screens/register_subpages/_2";
+import _3 from "../../screens/register_subpages/_3";
+import _4 from "../../screens/register_subpages/_4";
 
 const initialState : RegisterStateType = {
 	emailAddress: '',
@@ -35,29 +37,34 @@ const initialState : RegisterStateType = {
 const reducer = (state: RegisterStateType = initialState, action: any) : RegisterStateType => {
 
 	switch (action.type) {
-		case 'SET_EMAIL_ADDRESS': return {...state, emailAddress: action.payload};
-		case 'SET_USERNAME': return {...state, username: action.payload};
-		case 'SET_PASSWORD': return {...state, password: action.payload};
-		case 'SET_CONFIRM_PASSWORD': return {...state, confirmPassword: action.payload};
+		case 'VALID_REGISTER_FORM' : {
+			return {
+				...state,
+				emailAddress: action.payload.emailAddress,
+				username: action.payload.username,
+				password: action.payload.password,
+				confirmPassword: action.payload.confirmPassword,
+				currentPage: state.currentPage + 1,
+			};
+		}
 
-		case 'NEXT_PAGE': return {...state, currentPage: state.currentPage + 1}; // TODO: Add validation
+		case 'VALID_HOBBIES' : {
+			return {
+				...state,
+				hobbies: action.payload,
+				currentPage: state.currentPage + 1,
+			}
+		}
+
+		case 'VALID_IMAGES' : {
+			return {
+				...state,
+				picture: action.payload,
+				currentPage: state.currentPage + 1,
+			}
+		}
+
 		case 'PREVIOUS_PAGE': return {...state, currentPage: state.currentPage - 1};
-
-		case 'ADD_HOBBY': {
-			const newHobbies = [...state.hobbies];
-			newHobbies.push(action.payload);
-			return {...state, hobbies: newHobbies};
-		}
-
-		case 'REMOVE_HOBBY': {
-			const newHobbies = [...state.hobbies];
-			newHobbies.forEach((hobby, index) => {
-				if (hobby === action.payload) {
-					newHobbies.splice(index, 1);
-				}
-			});
-			return {...state, hobbies: newHobbies};
-		}
 
 		case 'SET_WIDTH': return {...state, width: action.payload};
 
@@ -66,14 +73,6 @@ const reducer = (state: RegisterStateType = initialState, action: any) : Registe
 }
 
 const SignInScreen = () => {
-
-	/**
-	 * Ignore the warning about nested virtualized lists
-	 * The warning is a false positive because the ScrollView is scrolling is disabled
-	 */
-	useEffect(() => {
-		LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
-	}, [])
 
 	const [state, localDispatch] = useReducer(reducer, initialState);
 
@@ -150,6 +149,23 @@ const SignInScreen = () => {
 					{/* -------------------------------------------------- */}
 
 					<_2
+						/* Second page container */
+						state={state}
+						localDispatch={localDispatch}
+					/>
+
+					{/* -------------------------------------------------- */}
+
+					<_3
+						/* Third page container */
+						state={state}
+						localDispatch={localDispatch}
+					/>
+
+					{/* -------------------------------------------------- */}
+
+					<_4
+						/* Fourth page container */
 						state={state}
 						localDispatch={localDispatch}
 					/>

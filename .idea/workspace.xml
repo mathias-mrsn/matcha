@@ -4,13 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="carousel works well just need to fix the ADD_HOBBY and REMOVE_HOBBY functions">
+    <list default="true" id="80dee051-710d-48cd-aa65-c9d5868e2cbd" name="Changes" comment="hobbies carousel works">
+      <change afterPath="$PROJECT_DIR$/requirements/client/components/ChooseImage/ChooseImage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/components/SmallText/SmallText.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_3.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_4.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/app/(auth)/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/app/(auth)/signin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton/AuthenticationButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationButton/AuthenticationButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/AuthenticationInputField/AuthenticationInputField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/components/CarouselHobbies/CarouselHobbies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/CarouselHobbies/CarouselHobbies.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/components/CarouselItem/CarouselItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/CarouselItem/CarouselItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/HeaderText/HeaderText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/HeaderText/HeaderText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/components/RegularText/RegularText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/components/RegularText/RegularText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_1.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_2.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/screens/register_subpages/_2.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/client/types/authentication.type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/types/authentication.type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/client/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,28 +48,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;signin__mathias&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mathias.mrsn/42/matcha&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/mathias.mrsn/42/matcha/requirements/client/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "signin__mathias",
+    "last_opened_file_path": "/Users/mathias.mrsn/42/matcha/requirements/client/components",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "ts.external.directory.path": "/Users/mathias.mrsn/42/matcha/requirements/client/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/requirements/client/components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/requirements/client/screens" />
       <recent name="$PROJECT_DIR$/requirements/client/assets/fonts" />
@@ -159,7 +174,9 @@
       <workItem from="1688548913855" duration="20543000" />
       <workItem from="1688589205532" duration="2424000" />
       <workItem from="1688636868549" duration="4571000" />
-      <workItem from="1688736826615" duration="11179000" />
+      <workItem from="1688736826615" duration="12201000" />
+      <workItem from="1688808890012" duration="5825000" />
+      <workItem from="1688986927294" duration="7059000" />
     </task>
     <task id="LOCAL-00001" summary="few packages installed for client side">
       <created>1687267628023</created>
@@ -271,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688748473622</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="hobbies carousel works">
+      <option name="closed" value="true" />
+      <created>1688764858341</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1688764858341</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +331,8 @@
     <MESSAGE value="register page in progress. InputField now can check the input. Next step -&gt; connect buttons" />
     <MESSAGE value="de la merde today" />
     <MESSAGE value="carousel works well just need to fix the ADD_HOBBY and REMOVE_HOBBY functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="carousel works well just need to fix the ADD_HOBBY and REMOVE_HOBBY functions" />
+    <MESSAGE value="hobbies carousel works" />
+    <option name="LAST_COMMIT_MESSAGE" value="hobbies carousel works" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
