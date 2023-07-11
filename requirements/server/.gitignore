@@ -1,2 +1,10 @@
-node_modules/
-dist/
+.idea
+*.iml
+out
+gen
+
+coverage
+
+node_modules
+build
+dist
