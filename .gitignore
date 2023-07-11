@@ -22,3 +22,7 @@ yarn-error.log*
 
 # Docker
 .env
+
+# IDE
+.idea
+.vscode

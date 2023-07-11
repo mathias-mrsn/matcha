@@ -2,10 +2,10 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
-import { Provider} from "react-redux";
-import {store} from "../store/ConfigureStore";
+import { Provider } from "react-redux";
+import { store } from "../store/ConfigureStore";
 
 import Notification from "../layout/Notification";
 
@@ -64,10 +64,12 @@ function RootLayoutNav() {
     <>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Provider store={store}>
-          {/*<Notification/>*/}
+          <Notification />
           <Stack>
+            <Stack.Screen name="(auth)/tfa" options={{ headerShown: false }} />
             <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+            <Stack.Screen name="(auth)/register" options={{ headerShown: false }} />
+            {/*<Stack.Screen name="modal" options={{ presentation: 'modal' }} />*/}
           </Stack>
         </Provider>
       </ThemeProvider>

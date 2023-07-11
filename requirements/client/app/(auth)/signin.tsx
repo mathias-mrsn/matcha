@@ -1,17 +1,18 @@
 /* Libraries */
 import {LinearGradient} from "expo-linear-gradient";
 import React from "react";
-import {View, Text, useWindowDimensions, Image, Button} from "react-native";
-import {Gesture, GestureDetector, PanGesture} from "react-native-gesture-handler";
+import {View, Text} from "react-native";
+import {GestureDetector} from "react-native-gesture-handler";
 import Animated, {
-	Easing, runOnJS, runOnUI,
-	useAnimatedGestureHandler,
-	useAnimatedStyle, useDerivedValue,
-	useSharedValue,
-	withSpring,
+	Easing,
+	runOnJS,
+	useAnimatedStyle,
 	withTiming
 } from "react-native-reanimated";
-import {useDispatch, useSelector} from "react-redux";
+import {Link} from "expo-router";
+
+/* Redux */
+import {useDispatch} from "react-redux";
 
 /* Components */
 import AuthenticationButton from "../../components/AuthenticationButton/AuthenticationButton"
@@ -20,13 +21,21 @@ import AuthenticationInputField from "../../components/AuthenticationInputField/
 /* Icons */
 import {AntDesign, Entypo} from "@expo/vector-icons";
 import SwipeUpIcon from "../../assets/jsx-icons/SwipeUpIcon";
-import {Link} from "expo-router";
+
+/* Hooks */
 import useSwipe from "../../hooks/useSwipe";
-import {HIDE_NOTIFICATION, SHOW_NOTIFICATION} from "../../constants";
-import {hideNotification, showNotification} from "../../actions/notification";
+
+/* Actions */
+import {showNotification} from "../../actions/notification";
+
+/* Layout */
+import HeaderText from "../../components/HeaderText/HeaderText";
+import RegularText from "../../components/RegularText/RegularText";
 
 /* Constants */
-const SCREEN_MAX_WIDTH = 600
+import {SCREEN_MAX_WIDTH} from "../../constants/screen.constant";
+
+/* Local constants */
 const FOOTER_HEIGHT = 450
 const TEXT_WHEN_SHOWN = [
 	'Hi.',
@@ -37,7 +46,7 @@ const TEXT_WHEN_HIDDEN = [
 	'Join matcha and find many people who share your interests !'
 ]
 
-const SignInScreen = ({navigation}: any) => {
+const SignInScreen = () => {
 	/* States */
 	const [email, setEmail] = React.useState<string>('')
 	const [password, setPassword] = React.useState<string>('')
@@ -115,27 +124,20 @@ const SignInScreen = ({navigation}: any) => {
 							width: '100%',
 						}}
 					>
-						<Text
-							/* Header title */
+						<View
 							style={{
-								textShadowColor: 'rgba(0, 0, 0, 0.25)',
-								textShadowOffset: {width: 0, height: 4},
-								textShadowRadius: 4,
-								fontSize: 32,
-								fontFamily: 'Poppins_SemiBold',
-								letterSpacing: 1.28,
 								position: 'absolute',
 								bottom: 0,
 								margin: 40,
-								display: 'flex',
-								flexDirection: 'column',
 							}}
 						>
-								<Text>{headerText[0]}{"\n"}</Text>
-								<Text
-									style={{color: '#ffffff'}}
-								>{headerText[1]}</Text>
-						</Text>
+							<HeaderText
+								primary={`${headerText[0]}\n`}
+								primaryColor={'#000000'}
+								secondary={headerText[1]}
+								secondaryColor={'#ffffff'}
+							/>
+						</View>
 					</View>
 					<Animated.View
 						/* Footer container */
@@ -179,13 +181,10 @@ const SignInScreen = ({navigation}: any) => {
 									paddingVertical: 30,
 								}}
 							>
-								<Text
-									  /* Form title */
-									  style={{
-										  fontSize: 18,
-										  fontFamily: 'Poppins_Medium',
-									  }}
-								  >Sign in to your account</Text>
+								<RegularText
+									text={'Sign in to your account'}
+									lineNumber={1}
+								/>
 								  <AuthenticationInputField
 									  type={'emailAddress'}
 									  placeholder={'Email'}
@@ -213,20 +212,27 @@ const SignInScreen = ({navigation}: any) => {
 										value={'Connect'}
 										style={{flex: 1,}}
 										onClicked={() => {dispatch(showNotification({
-											isShow: true,
 											type: 'error',
-											message: 'This feature is not available yet',
+											message: 'The server is not available yet',
 										}))}}
 									/>
 									<AuthenticationButton
 										/* Connect with google button */
 										type={'icon'}
 										icon={<AntDesign name="google" size={24} color="white" />}
+										onClicked={() => {dispatch(showNotification({
+											type: 'warning',
+											message: 'This feature is not available yet',
+										}))}}
 									/>
 									<AuthenticationButton
 										/* Connect with facebook button */
 										type={'icon'}
 										icon={<Entypo name="facebook" size={24} color="white" />}
+										onClicked={() => {dispatch(showNotification({
+											type: 'warning',
+											message: 'This feature is not available yet',
+										}))}}
 									/>
 								  </View>
 								  <View
@@ -290,4 +296,4 @@ const SignInScreen = ({navigation}: any) => {
 	)
 }
 
-export default SignInScreen
+export default SignInScreen;
