@@ -5,6 +5,7 @@ services:
   client:
     container_name: client
     hostname: client
+    platform: linux/x86_64
     build:
       context: .
       dockerfile: client.dockerfile
@@ -21,3 +22,39 @@ services:
       - ../client:/usr/client
     working_dir: /usr/client
     command: ["yarn", "run", "web"]
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    platform: linux/amd64
+    environment:
+      MYSQL_DATABASE: 'matcha_db'
+      MYSQL_ROOT_PASSWORD: Motdepasse42DB
+    ports:
+      - 3306:3306
+    networks:
+      - shared-network
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./../database:/docker-entrypoint-initdb.d
+    env_file: ./.env
+
+  phpMyAdmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    hostname: phpmyadmin
+    platform: linux/x86_64
+    environment:
+      PMA_ARBITRARY: 1
+    ports:
+      - "8080:80"
+      # - 443:443 #ssl plus tard
+    networks:
+      - shared-network
+
+
+networks:
+  shared-network:
+
+volumes:
+  mysql-data:

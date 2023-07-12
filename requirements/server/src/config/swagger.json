@@ -1,0 +1,67 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "dev",
+    "title": "matcha",
+    "description": "A minimal and easy app to date people around you."
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Local Dev"
+    },
+    {
+      "url": "/api/",
+      "description": "With docker-compose and nginx"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Cats",
+      "description": "API for cats in the system"
+    }
+  ],
+  "paths": {
+    "/cats": {
+      "get": {
+        "tags": [
+          "Cats"
+        ],
+        "summary": "Get all cats in system",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Cats"
+        ],
+        "summary": "Create a new cat in system",
+        "requestBody": {
+          "description": "Cat Object",
+          "required": true,
+          "content": {
+            "application/json": {
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    }
+  }
+}

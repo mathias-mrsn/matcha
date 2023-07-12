@@ -10,5 +10,8 @@ module.exports = {
         '@routes': '<rootDir>/src/api/routes/index.ts',
         '@controllers': '<rootDir>/src/api/controllers/index.ts',
         '@services': '<rootDir>/src/api/services/index.ts',
+        '@models': '<rootDir>/src/api/models/index.ts',
+        '@types': '<rootDir>/src/api/types/index.ts',
+        '@config': '<rootDir>/src/config/index.ts',
     }
 }

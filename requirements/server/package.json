@@ -21,10 +21,15 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.5.3",
+    "@types/morgan": "^1.9.4",
+    "@types/mysql": "^2.15.21",
     "@types/node": "^20.4.1",
     "@types/supertest": "^2.0.12",
+    "@types/swagger-jsdoc": "^6.0.1",
+    "@types/swagger-ui-express": "^4.1.3",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "^8.2.0",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "jest": "^29.6.1",
@@ -41,11 +46,19 @@
   "dependencies": {
     "@types/express": "^4.17.17",
     "express": "^4.18.2",
-    "module-alias": "^2.2.3"
+    "module-alias": "^2.2.3",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "tsoa": "^5.1.1"
   },
   "_moduleAliases": {
     "@routes": "src/api/routes",
     "@controllers": "src/api/controllers",
-    "@services": "src/api/services"
+    "@services": "src/api/services",
+    "@models": "src/api/models",
+    "@types": "src/api/types",
+    "@config": "src/config"
   }
 }

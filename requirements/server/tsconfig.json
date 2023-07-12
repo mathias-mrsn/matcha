@@ -110,7 +110,12 @@
       "@routes": ["api/routes"],
       "@controllers": ["api/controllers"],
       "@services": ["api/services"],
-    }
+      "@models": ["api/models"],
+      "@types": ["api/types"],
+      "@config": ["config"],
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
   },
   "include": [
     "src",
